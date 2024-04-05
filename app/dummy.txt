@@ -1,0 +1,178 @@
+      <Navbar />
+
+      <Banner
+        heading={"Welcome to Bin Mukhtar and Co"}
+        secondaryHeading={"Leading Law Firm in Pakistan"}
+        thirdHeading={
+          "We are a full-service law firm in Pakistan with a team of experienced lawyers."
+        }
+        paragraph={
+          "We provide legal services in Pakistan and USA. Our services include Incorporation and Trademark Registration in Pakistan and USA."
+        }
+        buttonText="Learn More"
+        imagePosition={"right"}
+        imgSrc="./images/1.png"
+      />
+     
+     
+     
+      <Awards
+        imgSrcArray={[
+          "./images/awards_1.png",
+          "./images/awards_2.png",
+          "./images/awards_3.png",
+          "./images/awards_4.png",
+        ]}
+        headingArray={[
+          "Won 2023 Startup",
+          "Rated 4.6 Stars",
+          "Online E-file Provider",
+          "Safe & Secure",
+        ]}
+        textArray={[
+          "of the year award, from PDA Pakistan Digital Awards",
+          "12,000+ reviews and 4.6 rating by satisfied customers",
+          "who has completed sandbox testing with FBR-IRIS",
+          "your information is private and secure on our site",
+        ]}
+      />
+      {/* 2nd banner */}
+      <Banner
+        heading="Say hello to the app that made everything even more convenient"
+        thirdHeading={"1 million app downloads by Pakistani's"}
+        buttonText="Contact Us On Whatsapp"
+        b
+        buttonCount={1}
+        imagePosition="left"
+        imgSrc="/images/1.png"
+      />
+
+      {/*collaborator component*/}
+      <Collaborator />
+
+      {/* team component */}
+      <Team />
+
+      {/* featured videos component*/}
+
+      <FeatureVideos
+        videoSrcArray={[
+          "https://www.youtube.com/embed/8jPL_5BoKuA",
+          " https://www.youtube.com/embed/Atq7VjVbaA8",
+          "https://www.youtube.com/embed/2fDSAthUL1E",
+          " https://www.youtube.com/embed/d3jXofmQm44",
+        ]}
+        headingArray={["Award 1", "Award 1", "Award 1", "Award 1"]}
+        textArray={[
+          "Bin Mukhtar & Co.’s experienced ...",
+          "Bin Mukhtar & Co.’s experienced ...",
+
+          "Bin Mukhtar & Co.’s experienced ...",
+          "Bin Mukhtar & Co.’s experienced ...",
+          "Bin Mukhtar & Co.’s experienced ...",
+        ]}
+      />
+
+      {/*services row*/}
+      <CardTemplate
+        imgSize={"w-1/3"}
+        Heading="Services we offer"
+        imgSrcArray={[
+          "./images/icon-1.png",
+          "./images/icon-3.png",
+          "../images/icon-4.png",
+          "./images/icon-3.png",
+          "./images/icon-5.png",
+          "./images/icon-2.png",
+        ]}
+        headingArray={[
+          "Tax",
+          "Corporate",
+          "SEO and Digital Marketing",
+          "Business Service & Outsourcing",
+
+          "Web Development",
+
+          "Advisory",
+        ]}
+        textArray={[
+          "Our experienced professionals in taxation, help you with all matters related to direct and indirect taxation locally as well as global challenges…",
+          "Audit extends beyond just number verification, it checks the assurances by management about their performance and financial soundness, and…",
+          "We are the catalysts for your online success. Our SEO and digital marketing experts employ cutting-edge strategies to enhance your online visibility and drive measurable …",
+          "Most businesses spend countless hours and many dollars managing internal finance and accounting functions that can often detract …",
+          "With the expertise built on 100+ web projects, Our professionally designs, redesigns and continuously supports customer-facing …",
+
+          " is a good firmBin Mukhtar & Co.’s experienced Advisory professionals help organizations in planning and implementing strategic …",
+        ]}
+      />
+
+      {/* testimonials component */}
+
+      <Testimonials
+        heading="Testimonials"
+        imgSize={"size-20"}
+        imgSrcArray={[
+          "./images/testimonial-1.jpeg",
+          "./images/icon-3.png",
+          "../images/icon-4.png",
+          "./images/icon-3.png",
+          "./images/icon-5.png",
+          "./images/icon-2.png",
+        ]}
+        headingArray={[
+          "Muhammad Fahad | Developer ",
+          "Corporate",
+          "SEO and Digital Marketing",
+          "Business Service & Outsourcing",
+          "Web Development",
+          "Advisory",
+        ]}
+        textArray={[
+          "Our experienced professionals in taxation, help you with all matters related to direct and indirect taxation locally as well as global challenges…",
+          "Audit extends beyond just number verification, it checks the assurances by management about their performance and financial soundness, and…",
+          "We are the catalysts for your online success. Our SEO and digital marketing experts employ cutting-edge strategies to enhance your online visibility and drive measurable …",
+          "Most businesses spend countless hours and many dollars managing internal finance and accounting functions that can often detract …",
+          "With the expertise built on 100+ web projects, Our professionally designs, redesigns and continuously supports customer-facing …",
+
+          " is a good firmBin Mukhtar & Co.’s experienced Advisory professionals help organizations in planning and implementing strategic …",
+        ]}
+      />
+
+      {/* blogs component*/}
+      <CardTemplate
+        Heading="Blogs"
+        imgSrcArray={[
+          "./images/blog-1.jpg",
+          "./images/blog-2.jpg",
+          "./images/blog-3.jpg",
+          "./images/blog-4.jpg",
+          "./images/blog-4.jpg",
+          "./images/blog-5.jpg",
+          "./images/blog-6.jpg",
+          "./images/blog-7.jpg",
+          "./images/blog-8.jpg",
+        ]}
+        headingArray={[
+          "Are You Require Tax File",
+          "Lorem Ipsun lorem Ipsum",
+          "Lorem Ipsun lorem Ipsum",
+          "Lorem Ipsun lorem Ipsum",
+          "Are You Require Tax File",
+          "Lorem Ipsun lorem Ipsum",
+          "Lorem Ipsun lorem Ipsum",
+          "Lorem Ipsun lorem Ipsum",
+          "Lorem Ipsun lorem Ipsum",
+        ]}
+        textArray={[
+          "Our experienced professionals in taxation, help you with all matters related to direct and indirect taxation locally as well as global challenges…",
+          "Audit extends beyond just number verification, it checks the assurances by management about their performance and financial soundness, and…",
+          "We are the catalysts for your online success. Our SEO and digital marketing experts employ cutting-edge strategies to enhance your online visibility and drive measurable …",
+          "We are the catalysts for your online success. Our SEO and digital marketing experts employ cutting-edge strategies to enhance your online visibility and drive measurable …",
+          "Most businesses spend countless hours and many dollars managing internal finance and accounting functions that can often detract …",
+          "With the expertise built on 100+ web projects, Our professionally designs, redesigns and continuously supports customer-facing …",
+
+          " is a good firmBin Mukhtar & Co.’s experienced Advisory professionals help organizations in planning and implementing strategic …",
+          " is a good firmBin Mukhtar & Co.’s experienced Advisory professionals help organizations in planning and implementing strategic …",
+          " is a good firmBin Mukhtar & Co.’s experienced Advisory professionals help organizations in planning and implementing strategic …",
+        ]}
+      />

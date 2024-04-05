@@ -1,0 +1,69 @@
+/* this styling is also applied to the award component */
+
+
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: fit-content;
+    padding: 0% 0%;
+  }
+  .img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .col3 {
+    width: 50%;
+  }
+  .col7 {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: fit-content;
+    padding: 0% 0%;
+  }
+  .img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .col3 {
+    width: 80%;
+  }
+  .col7 {
+    width: 90%;
+  }
+ 
+}
+
+@media screen and (max-width: 320px) {
+    .row {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      height: fit-content;
+      padding: 0% 0%;
+    }
+    .img {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .col3 {
+      width: 60%;
+    }
+    .col7 {
+      width:80%;
+    }
+   
+  }
+  .heading{
+    margin-top: 150px;
+  }

@@ -1,0 +1,50 @@
+@media screen and (max-width: 768px) {
+  .section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .row2 {
+    width: 30%;
+    height: 80%;
+  }
+  .img {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .section {
+    display: flex;
+  }
+  .row2 {
+    width: 40%;
+    height: 100%;
+  }
+}
+
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col1 {
+  flex: 0 0 auto; /* This ensures the column does not grow or shrink */
+  width: calc(
+    10.5% - 10px
+  ); /* Each column takes up 12.5% of the width with a gap of 10px between */
+  margin-right: 10px; /* Adjust the margin between columns */
+}
+
+.col1:last-child {
+  margin-right: 0; /* Remove right margin for the last column in each row */
+}
+
+.col1 img {
+  max-width: 100%; /* Ensure images don't exceed their container */
+  height: auto; /* Maintain aspect ratio */
+}
+@media screen and (max-width: 375px) {
+  .heading{
+    font-size: 3.0rem;
+  }
+}

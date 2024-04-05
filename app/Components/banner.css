@@ -1,0 +1,25 @@
+/* responsiveness code start form here */
+@media only screen and (max-width: 768x) {
+  .row {
+    flex-direction: column;
+    height: 150vh;
+  }
+  .col7 {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .col7  {
+  font-size: small;
+  }
+  .textt{
+    font-size: 4 .5rem;
+  }
+}
+
+body {
+  display: none;
+}
