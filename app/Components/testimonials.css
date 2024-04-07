@@ -81,3 +81,10 @@ body {
   color: #333;
   text-align: center;
 }
+
+@media screen and (max-width: 375px) {
+  .col3{
+    width: 85%;
+  }
+  
+}

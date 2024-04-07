@@ -13,6 +13,7 @@ import CardTemplate from "./Components/CardTemplate";
 import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
+
 const page = () => {
   return (
     <div>
@@ -147,6 +148,7 @@ const page = () => {
 
       {/* fixed logos of whatsapp and AI */}
       <FixedLogos />
+     
     </div>
   );
 };

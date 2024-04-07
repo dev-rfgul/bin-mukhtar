@@ -1,63 +1,42 @@
 import React, { useState, useEffect } from "react";
 
-const TestimonialCarousel = ({ buttonText }) => {
+const Testimonials = ({ buttonText }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonialData = [
     {
       id: 1,
-      name: "Muhammad Fahad",
-      image: "./images/testimonial-1.jpeg",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      name: "Individual NTN Registration",
+      text: "Just register your Individual NTN in 3 simple steps. Register, Upload, Pay.",
     },
     {
       id: 2,
-      name: "Muhammad ",
-      image: "./images/testimonial-1.jpeg",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.sit amet, consectetur adipiscing elit.",
+      name: "Tax Filing",
+      text: "No appointments, no documents, File your taxes within minutes.",
     },
     {
       id: 3,
-      name: "Jane ",
-      image: "./images/testimonial-1.jpeg",
-      text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      name: "Business NTN Registration      ",
+      text: "The simplest and quickest way to start your business in pakistan.",
     },
     {
       id: 4,
-      name: "Jane  Sahb",
-      image: "./images/testimonial-1.jpeg",
-      text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      name: "Sales Tax Registration",
+      text: " GST Registration was never this easy, Register your sales tax with Befiler Now.",
     },
     {
-      id: 4,
-      name: "Jane  Sahb 5",
-      image: "./images/testimonial-1.jpeg",
-      text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      id: 4,
-      name: "Jane  Sahb 5",
-      image: "./images/testimonial-1.jpeg",
-      text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      id: 4,
-      name: "Jane  Sahb 6",
-      image: "./images/testimonial-1.jpeg",
-      text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      id: 4,
-      name: "Jane  Sahb 7",
-      image: "./images/testimonial-1.jpeg",
-      text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      id: 5,
+      name: "Business Tax Filing",
+      text: "Stop worrying about your taxes, Befiler team of experts got you covered.",
     },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialData.length);
-    }, 3000);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 0.5) % testimonialData.length
+      );
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -74,23 +53,29 @@ const TestimonialCarousel = ({ buttonText }) => {
 
   return (
     <div className="max-w-screen-lg mx-auto p-4 relative">
-      <h1 className="text-6xl text-primary font-bold text-center ">
-        Testimonials
-      </h1>
+      <h1 className="text-6xl text-primary font-bold text-center ">Services</h1>
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(${-currentIndex * 40}%)` }}
+          style={{ transform: `translateX(${-currentIndex * 70}%)` }}
         >
           {testimonialData.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="w-1/3 flex-shrink-0 flex flex-col items-center justify-center col3"
+              className="w-1/3  flex-shrink-0 flex flex-col items-center justify-center col3"
             >
               <div className="neumorphism flex-col text-center items-center justify-center ">
-                <h3 className="text-lg font-semibold">{testimonial.name}</h3>
+                <h3 className=" text-2xl font-semibold text-primary">
+                  {testimonial.name}
+                </h3>
+                <br />
+                <br />
                 <p className="text-gray-600">{testimonial.text}</p>
-                <button className="bg-primary">contact us</button>
+                <br />
+                <br />
+                <button class="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
+                  Click me
+                </button>
               </div>
             </div>
           ))}
@@ -120,4 +105,6 @@ const TestimonialCarousel = ({ buttonText }) => {
   );
 };
 
-export default TestimonialCarousel;
+export default Testimonials;
+
+

@@ -1,6 +1,8 @@
 import React from "react";
 import Iframe from "react-iframe";
 
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <div className="bg-primary   text-white">
@@ -79,6 +81,24 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-center mt-8">
               <p className="text-center md:text-left ">
                 &copy; 2024. All rights reserved
+                <li className="">
+                  <Link
+                    href="/Privacy"
+                    as="/Privacy"
+                    onClick={() => setNavbar(!navbar)}
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li className="">
+                  <Link
+                    href="/Terms"
+                    as="/Terms"
+                    onClick={() => setNavbar(!navbar)}
+                  >
+                    Terms And Conditions
+                  </Link>
+                </li>
               </p>
             </div>
             <div className="col-span-4">
