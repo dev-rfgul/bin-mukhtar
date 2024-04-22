@@ -21,7 +21,7 @@ const page = () => {
      
       <Navbar />
       <Banner
-        heading={"Welcome to Bin Mukhtar and Co"}
+        heading={"Welcome to  and Co"}
         secondaryHeading={"Leading Corporate Consultant  in Pakistan"}
         thirdHeading={
           "We are a full-service corporate firm in Pakistan with a team of experienced charted accountants."
