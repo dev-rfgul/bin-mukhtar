@@ -1,5 +1,5 @@
-import React from "react"; 
-import '../styling/banner.css'; // Adjusted import path
+import React from "react";
+import "../styling/banner.css"; // Adjusted import path
 const Banner = ({
   imagePosition,
   heading,
@@ -8,7 +8,6 @@ const Banner = ({
   paragraph,
   paragraph2,
   buttonText,
-  buttonText2,
   imgSrc,
 }) => {
   return (
@@ -20,10 +19,12 @@ const Banner = ({
               <img className="min-h-full img" src={imgSrc} alt="Image" />
             </div>
           )}
-          <div  className="col7 text-5xl p-5">
-            <span className="text-5xl text-primary font-bold text heading1" >{heading}</span>
+          <div className="col7 text-5xl p-5">
+            <span className="text-5xl text-primary font-bold text heading1">
+              {heading}
+            </span>
             <br></br>
-            <span className="text-black-100 text text-4xl " >
+            <span className="text-black-100 text text-4xl ">
               {secondaryHeading} <br></br>
             </span>
             <span className="text-3xl text">{thirdHeading}</span>
@@ -38,11 +39,21 @@ const Banner = ({
             </span>
             <div className="">
               <button className=" button glow-button text-2xl font-bold hover:shadow hover:text-white bg-primary text-white p-2 rounded-lg mt-4 ">
-                
-                {" "}
-                {buttonText}
-                {buttonText2}
+                <a
+                  href="https://wa.me/923329296026?text=Hello , I am "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {buttonText}
+                  {/* <img
+                    src="./images/whatsapp.png"
+                    alt="WhatsApp Logo"
+                    className="w-12 h-12"
+                  /> */}
+                </a>
               </button>
+
+              
             </div>
           </div>
           {imagePosition === "right" && (

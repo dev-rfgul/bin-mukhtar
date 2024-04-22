@@ -1,12 +1,14 @@
+"use client"
 import React from "react";
-import { Navbar } from "react-bootstrap";
+import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Contact from "./Contact";
 
 const page = () => {
   return (
     <div>
       <Navbar />
-      hi i am form contact page
+      <Contact/>
       <Footer />
     </div>
   );

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 function Calculator() {
-  const notify = () => toast("Your Annual tax is",{annualTax});
+  const notify = () => toast("Your tax has been calculated!");
 
   const [monthlySalary, setMonthlySalary] = useState("");
   const [annualSalary, setAnnualSalary] = useState("");
@@ -13,41 +14,59 @@ function Calculator() {
     setMonthlySalary(e.target.value);
   };
 
-  const calculateTax = () => {
+  const calculateSalariedTax = () => {
     const monthlySalaryFloat = parseFloat(monthlySalary);
-    if (!isNaN(monthlySalaryFloat)) {
-      const annualSalaryFloat = monthlySalaryFloat * 12;
-      const annualTaxFloat = calculateAnnualTax(monthlySalaryFloat);
-      const monthlyTaxFloat = annualTaxFloat / 12;
-
-      setAnnualSalary((monthlySalaryFloat * 12).toFixed(2));
-      setAnnualTax(annualTaxFloat.toFixed(2));
-      setMonthlyTax(monthlyTaxFloat.toFixed(2));
+    if (isNaN(monthlySalaryFloat) || monthlySalaryFloat <= 0) {
+      toast.error("Please enter a valid salary amount.");
+      return;
     }
+
+    const monthlyTaxFloat = calculateMonthlyTax(monthlySalaryFloat);
+    const annualTaxFloat = monthlyTaxFloat * 12;
+
+    setAnnualSalary((monthlySalaryFloat * 12).toFixed(2));
+    setAnnualTax(annualTaxFloat.toFixed(2));
+    setMonthlyTax(monthlyTaxFloat.toFixed(2));
+    notify();
   };
 
-  const calculateAnnualTax = (monthlySalary) => {
+  const calculateMonthlyTax = (monthlySalary) => {
     let taxAmount = 0;
 
-    if (monthlySalary > 50000) {
-      const annualSalary = monthlySalary * 12;
-
-      if (monthlySalary <= 350000) {
-        taxAmount = annualSalary * 0.015; // 1.5% tax for salary between 50,000 and 3.5 lac
-      } else if (monthlySalary <= 600000) {
-        taxAmount = 5250 + (monthlySalary - 350000) * 0.015; // 5,250 fixed + 1.5% tax for salary between 3.5 lac and 6 lac
-      } else {
-        taxAmount = 5250 + 3750 + (monthlySalary - 600000) * 0.03; // 5,250 fixed + 3% extra tax for salary above 6 lac
-      }
+    if (monthlySalary <= 50000) {
+      taxAmount = 0;
+    } else if (50000 < monthlySalary && monthlySalary <= 100000) {
+      taxAmount = 0.025 * (monthlySalary - 50000);
+    } else if (100000 < monthlySalary && monthlySalary <= 200000) {
+      taxAmount = 1250 + 0.125 * (monthlySalary - 100000);
+    } else if (200000 < monthlySalary && monthlySalary <= 300000) {
+      taxAmount = 13750 + 0.225 * (monthlySalary - 200000);
+    } else if (300000 < monthlySalary && monthlySalary <= 500000) {
+      taxAmount = 36250 + 0.275 * (monthlySalary - 300000);
+    } else if (500000 < monthlySalary && monthlySalary <= 1000000) {
+      taxAmount = 91250 + 0.35 * (monthlySalary - 500000);
+    } else {
+      taxAmount = 18875 + 0.35 * (monthlySalary - 1000000);
     }
-
     return taxAmount;
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className=" container mx-auto px-4 py-8">
       <div className="flex flex-col justify-center items-center h-screen">
         <h1 className="text-3xl font-semibold mb-4">Tax Calculator</h1>
+        <div className="">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 active:bg-slate-800 text-white font-bold py-2 px-4 rounded"
+            onClick={calculateSalariedTax}
+          >
+            Salaried Person
+          </button>
+
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Business Person
+          </button>
+        </div>
         <div className="w-full max-w-md px-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -66,17 +85,14 @@ function Calculator() {
         </div>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 focus:outline-none focus:shadow-outline"
-          onClick={() => {
-            calculateTax();
-            notify();
-          }}    
+          onClick={calculateSalariedTax}
         >
           Calculate
         </button>
         <ToastContainer />
       </div>
 
-      <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="neumorphism mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <h2 className="text-xl font-semibold mb-2">Monthly Details</h2>
           <div className="flex flex-col">

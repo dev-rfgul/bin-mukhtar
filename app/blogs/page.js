@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Navbar from "../Components/Navbar";
-import CardTemplate from "../Components/CardTemplate";
 import Footer from "../Components/Footer";
 import Awards from "../Components/Awards";
 
@@ -15,7 +14,7 @@ const Blogs = () => {
       <Awards
         imgHeight={"w-full"}
         heading="Blogs"
-        // heading="Blogs"
+ 
         imgSrcArray={[
           "./images/blog-5.jpg",
           "./images/blog-4.jpg",
@@ -39,8 +38,6 @@ const Blogs = () => {
       />
       <Awards
         imgHeight={"w-full"}
-        // heading="Blogs"
-        // heading="Blogs"
         imgSrcArray={[
           "./images/blog-5.jpg",
           "./images/blog-4.jpg",
@@ -64,8 +61,6 @@ const Blogs = () => {
       />
       <Awards
         imgHeight={"w-full"}
-        // heading="Blogs"
-        // heading="Blogs"
         imgSrcArray={[
           "./images/blog-5.jpg",
           "./images/blog-4.jpg",
@@ -87,7 +82,6 @@ const Blogs = () => {
           "your information is private and secure on our site",
         ]}
       />
-     
 
       <Footer />
     </div>

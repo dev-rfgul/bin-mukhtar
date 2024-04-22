@@ -16,24 +16,25 @@ function NavBar() {
               </Link>
               {/* HAMBURGER BUTTON FOR MOBILE */}
               <div className="md:hidden">
-                <img src=""  className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                  onClick={() => setNavbar(!navbar)}>
-                
-                </img>
+                <img
+                  src=""
+                  className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                  onClick={() => setNavbar(!navbar)}
+                ></img>
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={() => setNavbar(!navbar)}
                 >
                   {navbar ? (
                     <Image
-                    src="/images/icon-nav-2.png"
+                      src="/images/icon-nav-2.png"
                       width={30}
                       height={30}
                       alt="logo"
                     />
                   ) : (
                     <Image
-                    src="/images/icon-nav.png"
+                      src="/images/icon-nav.png"
                       width={30}
                       height={30}
                       alt="logo"
@@ -56,11 +57,17 @@ function NavBar() {
                     Tools
                   </Link>
                 </li>
-                {/* <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="./blogs" onClick={() => setNavbar(!navbar)}>
-                    Blogs
+
+                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                  <Link
+                    href="/Services"
+                    as="/Services"
+                    onClick={() => setNavbar(!navbar)}
+                  >
+                    Services
                   </Link>
-                </li> */}
+                </li>
+
                 <li className="pb-6 text-xl text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
                   <Link
                     href="/blogs"
@@ -70,17 +77,16 @@ function NavBar() {
                     Blogs
                   </Link>
                 </li>
-
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/contact" onClick={() => setNavbar(!navbar)}>
-                    Contact
+                <li className="pb-6 text-xl text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                  <Link
+                    href="/Contact"
+                    as="/Contact"
+                    onClick={() => setNavbar(!navbar)}
+                  >
+                    Contact Us
                   </Link>
                 </li>
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="#projects" onClick={() => setNavbar(!navbar)}>
-                    Sign Up 
-                  </Link>
-                </li>
+               
               </ul>
             </div>
           </div>

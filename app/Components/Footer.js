@@ -8,65 +8,123 @@ const Footer = () => {
     <div className="bg-primary   text-white">
       <div className="container  mx-auto py-12 flex justify-center items-center text-center">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* logo here */}
           <div className="col-span-1">
             {/* <h2 className="text-lg mb-6">Company.</h2> */}
             <img className="text-lg mb-6" src="./images/nav-logo.png"></img>
           </div>
+          {/* About section here */}
           <div className="col-span-1">
-            <h5 className="text-lg mb-3">About</h5>
+            <h5 className="text-lg mb-3 font-bold">About</h5>
             <ul className="list-none">
               <li className="mb-2">
-                <a href="#0">Profile</a>
+                <Link href="/" onClick={() => setNavbar(!navbar)}>
+                  Home
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#0">Career</a>
+                <Link href="./tools" onClick={() => setNavbar(!navbar)}>
+                  Tools
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#0">Privacy</a>
+                <Link
+                  href="/Services"
+                  as="/Services"
+                  onClick={() => setNavbar(!navbar)}
+                >
+                  Services
+                </Link>
+              </li>
+             
+              <li className="mb-2">
+                  <Link
+                    href="/blogs"
+                    as="/blogs"
+                    onClick={() => setNavbar(!navbar)}
+                  >
+                    Blogs
+                  </Link>
+                </li>
+                <li className="">
+                  <Link
+                    href="/Contact"
+                    as="/Contact"
+                    onClick={() => setNavbar(!navbar)}
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+            </ul>
+          </div>
+          {/* Social media here */}
+          <div className="col-span-1 ">
+            <h5 className="text-lg font-bold  mb-3 flex items-center">Find us</h5>
+            <ul className="list-none">
+              <li className="mb-2">
+                <a
+                  href="https://wa.me/923329296026?text=Hello , I am "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/facebook.png"
+                    alt="WhatsApp Logo"
+                    className="w-10 h-10"
+                  />
+                </a>
+              </li>
+              <li className="mb-2">
+                <a
+                  href="https://wa.me/923329296026?text=Hello , I am "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/instagram.png"
+                    alt="WhatsApp Logo"
+                    className="w-10 h-10"
+                  />
+                </a>
+              </li>
+              <li className="mb-2">
+                <a
+                  href="https://wa.me/923329296026?text=Hello , I am "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/tiktok.png"
+                    alt="WhatsApp Logo"
+                    className="w-10 h-10"
+                  />
+                </a>
               </li>
             </ul>
           </div>
-          <div className="col-span-1">
-            <h5 className="text-lg mb-3">Find us</h5>
-            <ul className="list-none">
-              <li className="mb-2">
-                <a href="#0">
-                  <i className="bi bi-instagram"></i> company
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#0">
-                  <i className="bi bi-twitter"></i> company_id
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#0">
-                  <i className="bi bi-facebook"></i> company
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Contact section here */}
           <div className="col-span-1">
             <h5 className="text-lg mb-3">Contact</h5>
             <ul className="list-none">
               <li className="mb-2">
                 <a href="#0">
-                  <i className="bi bi-geo-alt-fill"></i> Jl. Letjen abc, Malang,
-                  Jawa Timur
+                  <i className="bi bi-geo-alt-fill"></i> Commercial Plaza Lodhran
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#0">
-                  <i className="bi bi-telephone-fill"></i> +9898279387
+                  <i className="bi bi-telephone-fill">+92-318 048 1998</i> 
                 </a>
               </li>
               <li className="mb-2">
-                <a href="#0">
-                  <i className="bi bi-envelope-at-fill"></i> company@gmail.com
+                <a href="mailto:binmukhtarco@gmail.com">
+                  <i className="bi bi-envelope-at-fill">binmukhtarco@gmail.com</i> 
                 </a>
+             
               </li>
             </ul>
           </div>
+          {/* google map here */}
           <div className="col-span-4">
             <div className="map mt-4 aspect-w-16 aspect-h-9">
               <Iframe
@@ -74,9 +132,11 @@ const Footer = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10823.120414694546!2d71.65043933161311!3d29.540050045567973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922f8b2bc8ea9a7%3A0x92059e7da2d949e0!2sLodhran%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1668694705539!5m2!1sen!2sus"
                 allowFullScreen=""
                 loading="lazy"
+                
               ></Iframe>
             </div>
           </div>
+          {/* all rights reserved  */}
           <div className="col-span-4">
             <div className="flex flex-col md:flex-row justify-center mt-8">
               <p className="text-center md:text-left ">

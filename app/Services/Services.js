@@ -159,7 +159,6 @@ const ServiceCard = () => {
       requirements:
         "✓   Form P - 1 or Form P - 1A application without priority,  ✓ Form P - 2 or Form P - 2A application with priority,  ✓  Form P- 3 for provisional or Form P- 3A for complete specification), ✓       Patent Specification, ✓ Drawing(s) - if any,✓    Demand Draft / Pay order of fee as applicable per work, ✓ Form P - 28(power of Attorney) if any, ✓ Priority document(for convention application),✓ CNIC of the Copyrights applicant, ✓  Other Information or Documents as required",
     },
-   
 
     // USA services
 
@@ -213,17 +212,19 @@ const ServiceCard = () => {
   return (
     <div className="bg-white shadow-md rounded-md p-4 mb-4">
       <div className="section">
-        <div className="row">
+        {/* <div className="row">
           <div className="col">
-            <h1 className="text-3xl lg:text-5xl font-bold text-primary mb-4 lg:mb-6">
-              Our Business Services
-            </h1>
-            <p className="mb-4 lg:mb-6">
-              Registering a business can be quite stressful. Worry not! Get
-              expert assistance on how and which business structure to select
-              and start your entrepreneurial journey with a bang!
-            </p>
-            <div className="space-x-4 space-y-4 text-center justify-center items-center">
+            <div>
+              <h1 className="text-3xl lg:text-5xl font-bold text-primary mb-4 lg:mb-6">
+                Our Business Services
+              </h1>
+              <p className="mb-4 lg:mb-6">
+                Registering a business can be quite stressful. Worry not! Get
+                expert assistance on how and which business structure to select
+                and start your entrepreneurial journey with a bang!
+              </p>
+            </div>
+            <div className="   space-x-4 space-y-4 text-center justify-center items-center">
               <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center">
                 All
               </button>
@@ -245,14 +246,52 @@ const ServiceCard = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <div class="container mx-auto colSpecial">
+  <div class="lg:flex lg:justify-between lg:items-center">
+    <div class="lg:w-1/2 lg:pr-4">
+      <h1 class="text-3xl lg:text-5xl font-bold text-primary mb-4 lg:mb-6">
+        Our Business Services
+      </h1>
+      <p class="mb-4 lg:mb-6">
+        Registering a business can be quite stressful. Worry not! Get expert
+        assistance on how and which business structure to select and start your
+        entrepreneurial journey with a bang!
+      </p>
+    </div>
+    <div class="lg:w-1/2 lg:pl-4">
+      <div class="flex flex-wrap justify-center lg:justify-end">
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0 mr-2">
+          All
+        </button>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0 mr-2">
+          Income Tax return
+        </button>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0 mr-2">
+          Company's Registration
+        </button>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0 mr-2">
+          Sales Tax Registration
+        </button>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0 mr-2">
+          Intellectual Property
+        </button>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0">
+          USA services
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
 
       {services.map((service, index) => (
-        <div key={index} className="neumorphism mb-4">
+        <div key={index} className="neumorphism mt-4 mb-4">
           <div className="col">
             <div className="flex justify-between items-center mb-2">
-              <h2 className="text-lg font-bold text-primary">
+              <h2 className="text-lg font-bold text-primary ">
                 {service.title}
               </h2>
               <span className="text-green-500 font-semibold">
