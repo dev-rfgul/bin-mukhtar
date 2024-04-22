@@ -18,7 +18,7 @@ import Contact from "./Contact/Contact";
 const page = () => {
   return (
     <div>
-      <SpeedInsights/>
+     
       <Navbar />
       <Banner
         heading={"Welcome to Bin Mukhtar and Co"}
