@@ -1,6 +1,7 @@
 "use client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import React from "react";
 import Navbar from "./Components/Navbar";
@@ -17,6 +18,7 @@ import Contact from "./Contact/Contact";
 const page = () => {
   return (
     <div>
+      <SpeedInsights/>
       <Navbar />
       <Banner
         heading={"Welcome to Bin Mukhtar and Co"}
