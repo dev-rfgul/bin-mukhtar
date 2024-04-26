@@ -3,6 +3,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+
+
 import React from "react";
 import Navbar from "./Components/Navbar";
 import Awards from "./Components/Awards";
@@ -13,6 +15,7 @@ import FeatureVideos from "./Components/FeatureVideos";
 import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
+import BlogPost from "./Components/BlogPost";
 import Contact from "./Contact/Contact";
 
 const page = () => {
@@ -35,6 +38,7 @@ const page = () => {
       />
       {/* services component */}
       <Testimonials buttonText="View all services " />
+      
       <Awards
         imgHeight={"w-full"}
         heading=" Featured Blogs"
@@ -112,7 +116,9 @@ const page = () => {
       />
       <Contact />
       <Footer />
+      <BlogPost/>
       <FixedLogos />
+      <SpeedInsights />
     </div>
   );
 };
