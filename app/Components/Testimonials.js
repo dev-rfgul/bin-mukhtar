@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+// services are being renederd through this component.
 
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 const Testimonials = ({ buttonText }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -73,8 +76,14 @@ const Testimonials = ({ buttonText }) => {
                 <p className="text-gray-600">{testimonial.text}</p>
                 <br />
                 <br />
-                <button class="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
-                  Click me
+                <button className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
+                  <a
+                    href="https://wa.me/923329296026?text=Hello , I am "
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp
+                  </a>
                 </button>
               </div>
             </div>
@@ -83,7 +92,13 @@ const Testimonials = ({ buttonText }) => {
         <div className="flex justify-center items-center h-full">
           <div className="">
             <button className="button glow-button text-2xl font-bold hover:shadow hover:text-white bg-primary text-white p-2 rounded-lg mt-4">
-              {buttonText}
+              <Link
+                href="/Services"
+                as="/Services"
+                onClick={() => setNavbar(!navbar)}
+              >
+                {buttonText}
+              </Link>
             </button>
           </div>
         </div>
@@ -106,5 +121,3 @@ const Testimonials = ({ buttonText }) => {
 };
 
 export default Testimonials;
-
-

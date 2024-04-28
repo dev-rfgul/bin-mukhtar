@@ -45,11 +45,7 @@ const Banner = ({
                   rel="noopener noreferrer"
                 >
                   {buttonText}
-                  {/* <img
-                    src="./images/whatsapp.png"
-                    alt="WhatsApp Logo"
-                    className="w-12 h-12"
-                  /> */}
+                
                 </a>
               </button>
 

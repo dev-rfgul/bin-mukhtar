@@ -62,10 +62,10 @@ function Calculator() {
           >
             Salaried Person
           </button>
-
+{/* 
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Business Person
-          </button>
+          </button> */}
         </div>
         <div className="w-full max-w-md px-4">
           <label

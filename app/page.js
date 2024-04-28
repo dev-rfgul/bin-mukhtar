@@ -1,9 +1,7 @@
 "use client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import React from "react";
 import Navbar from "./Components/Navbar";
@@ -15,14 +13,14 @@ import FeatureVideos from "./Components/FeatureVideos";
 import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
-import BlogPost from "./Components/BlogPost";
 import Contact from "./Contact/Contact";
+import BlogPost from "./1stBlog/BlogPost";
 
 const page = () => {
   return (
     <div>
-     
       <Navbar />
+      {/* <Animation /> */}
       <Banner
         heading={"Welcome to Bin Mukhtar and Co"}
         secondaryHeading={"Leading Corporate Consultant  in Pakistan"}
@@ -30,7 +28,7 @@ const page = () => {
           "We are a full-service corporate firm in Pakistan with a team of experienced charted accountants."
         }
         paragraph={
-          "We provide legal services in Pakistan and USA. Our services include Incorporation and Trademark Registration in Pakistan and USA."
+          "We provide legal services in Pakistan and UAE. Our services include Incorporation and Trademark Registration in Pakistan and UAE."
         }
         buttonText="Contact Us  "
         imagePosition={"right"}
@@ -38,58 +36,57 @@ const page = () => {
       />
       {/* services component */}
       <Testimonials buttonText="View all services " />
-      
+
       <Awards
         imgHeight={"w-full"}
         heading=" Featured Blogs"
+        buttonText={"Read More"}
         bacol=" section bg-secondary"
         imgSrcArray={[
-          "./images/blog-5.jpg",
-          "./images/blog-4.jpg",
-          "./images/blog-1.jpg",
           "./images/blog-2.jpg",
+          "./images/blog-9.jpg",
+          "./images/blog-1.jpg",
+          "./images/blog-5.jpg",
         ]}
         headingArray={[
-          "Business Service & Outsourcing",
-
-          "Web Development",
-
-          "Advisory",
-          "Advisory",
+          "FBR’s New Directive: A Step Towards Transparent Taxation in Pakistan",
+          "How Freelancers Can File Their Income Tax Returns?",
+          "Are You Required to File a Tax Return in Pakistan?",
+          "A Guide on How to Run a Leather Export Busine",
         ]}
         textArray={[
-          "of the year award, from PDA Pakistan Digital Awards",
-          "12,000+ reviews and 4.6 rating by satisfied customers",
-          "who has completed sandbox testing with FBR-IRIS",
-          "your information is private and secure on our site",
+          "",
+          "",
+          "",
+          "",
         ]}
+        routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       />
 
       <Collaborator />
       <Banner
         heading="Say hello to the app that made everything even more convenient"
-        thirdHeading={"1 million app downloads by Pakistani's"}
+        thirdHeading={"1000+ Satisfied customers in Pakistan"}
         buttonText="Contact Us "
         buttonCount={1}
         imagePosition="left"
         imgSrc="/images/1.png"
       />
+
       <FeatureVideos
         videoSrcArray={[
-          "https://www.youtube.com/embed/8jPL_5BoKuA",
-          " https://www.youtube.com/embed/Atq7VjVbaA8",
-          "https://www.youtube.com/embed/2fDSAthUL1E",
-          " https://www.youtube.com/embed/d3jXofmQm44",
+          "https://www.youtube.com/embed/EsjiOF2ruZA?si=rp2CzgKwZccAx-OE",
+          " https://www.youtube.com/embed/nkrx2yS8gmw?si=6oyD2Lc80TRxJ83d",
+          "https://www.youtube.com/embed/LdUg-PJiWPA?si=MnomcaR5_LLd9cPq",
+          "https://www.youtube.com/embed/jG9Rg0SsYpA?si=054gB_RbG3Gfwpcg",
         ]}
-        headingArray={["Award 1", "Award 1", "Award 1", "Award 1"]}
-        textArray={[
-          "Bin Mukhtar & Co.’s experienced ...",
-          "Bin Mukhtar & Co.’s experienced ...",
-
-          "Bin Mukhtar & Co.’s experienced ...",
-          "Bin Mukhtar & Co.’s experienced ...",
-          "Bin Mukhtar & Co.’s experienced ...",
+        headingArray={[
+          "Enforcement of Section 114B of Income Tax Ordinance, 2001 to Enforce Filing of Returns",
+          " How to Become filer in Pakistan | Active Filer Process in Pakistan 2024 | FBR ALT Complete Process",
+          "What is Tax on Salary Income | How to Calculate Tax on Salary | Calculate Withholding Tax on Salary        ",
+          " Income Tax Understanding Two Quick Tips | Income Tax Basic concept | FBR | IRIS",
         ]}
+        textArray={["", "", "", "", ""]}
       />
       <Team />
       <Awards
@@ -116,9 +113,10 @@ const page = () => {
       />
       <Contact />
       <Footer />
-      <BlogPost/>
+      {/* <BlogPost/> */}
       <FixedLogos />
       <SpeedInsights />
+      <BlogPost />
     </div>
   );
 };
