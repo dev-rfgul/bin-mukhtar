@@ -15,27 +15,27 @@ const Blogs = () => {
       <Awards
         imgHeight={"w-full"}
         heading=" Featured Blogs"
+        buttonText={"Read More"}
         bacol=" section bg-secondary"
         imgSrcArray={[
-          "./images/blog-5.jpg",
-          "./images/blog-4.jpg",
-          "./images/blog-1.jpg",
           "./images/blog-2.jpg",
+          "./images/blog-9.jpg",
+          "./images/blog-1.jpg",
+          "./images/blog-5.jpg",
         ]}
         headingArray={[
-          "Business Service & Outsourcing",
-
-          "Web Development",
-
-          "Advisory",
-          "Advisory",
+          "FBR’s New Directive: A Step Towards Transparent Taxation in Pakistan",
+          "How Freelancers Can File Their Income Tax Returns?",
+          "Are You Required to File a Tax Return in Pakistan?",
+          "A Guide on How to Run a Leather Export Busine",
         ]}
         textArray={[
-          "of the year award, from PDA Pakistan Digital Awards",
-          "12,000+ reviews and 4.6 rating by satisfied customers",
-          "who has completed sandbox testing with FBR-IRIS",
-          "your information is private and secure on our site",
+          "",
+          "",
+          "",
+          "",
         ]}
+        routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       />
 
 
