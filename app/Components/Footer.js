@@ -63,39 +63,39 @@ const Footer = () => {
             <ul className="list-none">
               <li className="mb-2">
                 <a
-                  href="https://wa.me/923329296026?text=Hello , I am "
+                  href="https://www.facebook.com/binmukhtarco/?paipv=0&eav=AfbVhjK_u6QzxNzfvM-57fGhNl2uoL3toOJ-K-9ym2oykAPxdEtg2fP1X06IJAwDKQo&_rdr"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
                     src="./images/facebook.png"
-                    alt="WhatsApp Logo"
+                    alt="Facebook Logo"
                     className="w-10 h-10"
                   />
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="https://wa.me/923329296026?text=Hello , I am "
+                  href="https://www.instagram.com/binmukhtarco/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
                     src="./images/instagram.png"
-                    alt="WhatsApp Logo"
+                    alt="Instagram Logo"
                     className="w-10 h-10"
                   />
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="https://wa.me/923329296026?text=Hello , I am "
+                  href="https://www.linkedin.com/company/binmukhtarco/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="./images/tiktok.png"
-                    alt="WhatsApp Logo"
+                    src="./images/linkedin.png"
+                    alt="Linkedin Logo"
                     className="w-10 h-10"
                   />
                 </a>

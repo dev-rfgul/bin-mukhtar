@@ -673,7 +673,7 @@ const ServiceCard = () => {
             <div className="flex justify-end items-center">
               <button className="mr-2">
                 <a
-                  href="https://wa.me/923329296026?text=Hello , I am "
+                  href="https://wa.me/923180481998?text=Hello , I am "
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -686,7 +686,7 @@ const ServiceCard = () => {
               </button>
               <button>
                 <a
-                  href="tel:+92-332-9296026"
+                  href="tel:+92-318-0481998"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

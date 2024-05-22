@@ -4,7 +4,7 @@ const FixedLogos = () => {
   return (
     <div className="fixed bottom-4 right-4 flex flex-col space-y-4 z-10">
       <a
-        href="https://wa.me/923329296026?text=Hello How May I Help You?"
+        href="https://wa.me/923180481998?text=Hello How May I Help You?"
         target="_blank"
         rel="noopener noreferrer"
       >

@@ -13,6 +13,7 @@ import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
 import Contact from "./Contact/Contact";
+// import BlogPost from "./1stBlog/BlogPost";
 
 const page = () => {
   return (

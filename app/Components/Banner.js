@@ -40,7 +40,7 @@ const Banner = ({
             <div className="">
               <button className=" button glow-button text-2xl font-bold hover:shadow hover:text-white bg-primary text-white p-2 rounded-lg mt-4 ">
                 <a
-                  href="https://wa.me/923329296026?text=Hello , I am "
+                  href="https://wa.me/923180481998?text=Hello , I am "
                   target="_blank"
                   rel="noopener noreferrer"
                 >
