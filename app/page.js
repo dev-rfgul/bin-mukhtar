@@ -2,7 +2,6 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
 import React from "react";
 import Navbar from "./Components/Navbar";
 import Awards from "./Components/Awards";
@@ -14,7 +13,6 @@ import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
 import Contact from "./Contact/Contact";
-// import BlogPost from "./1stBlog/BlogPost";
 
 const page = () => {
   return (
@@ -54,12 +52,7 @@ const page = () => {
           "Are You Required to File a Tax Return in Pakistan?",
           "A Guide on How to Run a Leather Export Busine",
         ]}
-        textArray={[
-          "",
-          "",
-          "",
-          "",
-        ]}
+        textArray={["", "", "", ""]}
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       />
 

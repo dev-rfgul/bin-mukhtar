@@ -1,9 +1,9 @@
 // services are being renederd through this component.
 
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 const Testimonials = ({ buttonText }) => {
+  const [showPopup, setShowPopup] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonialData = [
@@ -53,6 +53,20 @@ const Testimonials = ({ buttonText }) => {
       prevIndex === 0 ? testimonialData.length - 1 : prevIndex - 1
     );
   };
+  useEffect(() => {
+    if (showPopup) {
+      const handleClosePopup = (e) => {
+        if (e.target.id === "popup-background") {
+          setShowPopup(false);
+        }
+      };
+
+      window.addEventListener("click", handleClosePopup);
+      return () => {
+        window.removeEventListener("click", handleClosePopup);
+      };
+    }
+  }, [showPopup]);
 
   return (
     <div className="max-w-screen-lg mx-auto p-4 relative">
@@ -88,6 +102,38 @@ const Testimonials = ({ buttonText }) => {
               </div>
             </div>
           ))}
+
+          {showPopup && (
+            <div
+              id="popup-background"
+              className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
+            >
+              <div className="bg-white p-8 rounded shadow-lg w-11/12 sm:w-2/3 md:w-1/2 lg:w-1/3">
+                <h2 className="text-2xl text-black font-bold mb-4">
+                  AI Generated Number: {AIGuess}
+                </h2>
+                <h2 className="text-2xl text-black font-bold mb-4">
+                  Your Number: {number}
+                </h2>
+
+                <div className="mt-4">
+                  <button
+                    onClick={() => generateNextNumber(true)}
+                    className="bg-gray-800 text-white px-4 py-2 rounded border border-transparent hover:bg-white hover:text-black hover:border-black hover:font-bold mr-5"
+                  >
+                    Greater
+                  </button>
+
+                  <button
+                    onClick={() => generateNextNumber(false)}
+                    className="bg-gray-800 text-white px-4 py-2 rounded border border-transparent hover:bg-white hover:text-black hover:border-black hover:font-bold mr-5"
+                  >
+                    Smaller
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex justify-center items-center h-full">
           <div className="">
@@ -121,3 +167,34 @@ const Testimonials = ({ buttonText }) => {
 };
 
 export default Testimonials;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

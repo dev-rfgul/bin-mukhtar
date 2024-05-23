@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,6 +10,13 @@ function Calculator() {
   const [annualSalary, setAnnualSalary] = useState("");
   const [monthlyTax, setMonthlyTax] = useState("");
   const [annualTax, setAnnualTax] = useState("");
+
+  const autoScroll = () => {
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth", // Optional: makes the scroll smooth
+    });
+  };
 
   const handleMonthlySalaryChange = (e) => {
     setMonthlySalary(e.target.value);
@@ -46,23 +54,25 @@ function Calculator() {
     } else if (500000 < monthlySalary && monthlySalary <= 1000000) {
       taxAmount = 91250 + 0.35 * (monthlySalary - 500000);
     } else {
-      taxAmount = 18875 + 0.35 * (monthlySalary - 1000000);
+      taxAmount = 188750 + 0.35 * (monthlySalary - 1000000);
     }
     return taxAmount;
   };
 
   return (
-    <div className=" container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col justify-center items-center h-screen">
-        <h1 className="text-3xl font-semibold mb-4">Tax Calculator</h1>
-        <div className="">
+      <h1 className="text-3xl font-semibold mt-6 sm:mt-10 md:mt-14 mb-4">Tax Calculator</h1>
+
+
+        <div className="mb-4">
           <button
             className="bg-blue-500 hover:bg-blue-700 active:bg-slate-800 text-white font-bold py-2 px-4 rounded"
             onClick={calculateSalariedTax}
           >
             Salaried Person
           </button>
-{/* 
+          {/* 
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Business Person
           </button> */}
@@ -85,7 +95,10 @@ function Calculator() {
         </div>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 focus:outline-none focus:shadow-outline"
-          onClick={calculateSalariedTax}
+          onClick={() => {
+            autoScroll();
+            calculateSalariedTax();
+          }}
         >
           Calculate
         </button>
