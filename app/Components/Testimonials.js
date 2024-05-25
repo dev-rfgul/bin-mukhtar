@@ -6,7 +6,7 @@ const Testimonials = ({ buttonText }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   // const [showPopup, setShowPopup] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
 
   const testimonialData = [
     {
