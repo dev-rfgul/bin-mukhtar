@@ -57,6 +57,8 @@ const page = () => {
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       />
 
+
+
       <Collaborator />
       <Banner
         heading="Say hello to the app that made everything even more convenient"
