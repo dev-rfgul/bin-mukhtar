@@ -31,7 +31,7 @@ const page = () => {
         }
         buttonText="Contact Us  "
         imagePosition={"right"}
-        imgSrc="./images/1.png"
+        imgSrc="./images/15-1.png"
       />
       {/* services component */}
       <Testimonials buttonText="View all services " />

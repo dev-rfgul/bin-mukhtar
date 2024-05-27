@@ -53,7 +53,7 @@ const Banner = ({
             </div>
           </div>
           {imagePosition === "right" && (
-            <div className="col3  p-5">
+            <div className="col3  p-5 mt-11">
               <img className="min-h-full" src={imgSrc} alt="Image" />
             </div>
           )}
