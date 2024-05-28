@@ -66,7 +66,7 @@ const page = () => {
         buttonText="Contact Us "
         buttonCount={1}
         imagePosition="left"
-        imgSrc="/images/1.png"
+        imgSrc="/images/16-1.png"
       />
 
       <FeatureVideos
