@@ -36,30 +36,32 @@ const Footer = () => {
                   Services
                 </Link>
               </li>
-             
+
               <li className="mb-2">
-                  <Link
-                    href="/blogs"
-                    as="/blogs"
-                    onClick={() => setNavbar(!navbar)}
-                  >
-                    Blogs
-                  </Link>
-                </li>
-                <li className="">
-                  <Link
-                    href="/Contact"
-                    as="/Contact"
-                    onClick={() => setNavbar(!navbar)}
-                  >
-                    Contact Us
-                  </Link>
-                </li>
+                <Link
+                  href="/blogs"
+                  as="/blogs"
+                  onClick={() => setNavbar(!navbar)}
+                >
+                  Blogs
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  href="/Contact"
+                  as="/Contact"
+                  onClick={() => setNavbar(!navbar)}
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
           {/* Social media here */}
           <div className="col-span-1 ">
-            <h5 className="text-lg font-bold  mb-3 flex items-center">Find us</h5>
+            <h5 className="text-lg font-bold  mb-3 flex items-center">
+              Find us
+            </h5>
             <ul className="list-none">
               <li className="mb-2">
                 <a
@@ -108,19 +110,23 @@ const Footer = () => {
             <ul className="list-none">
               <li className="mb-2">
                 <a href="#0">
-                  <i className="bi bi-geo-alt-fill"></i> Commercial Plaza Lodhran
+                  <i className="bi bi-geo-alt-fill">Commercial Plaza Multan</i> <br></br>
+                  <i className="bi bi-geo-alt-fill">Commercial Plaza bwp</i> <br></br>
+                  <i className="bi bi-geo-alt-fill">Commercial Plaza lahpre</i> 
+                  
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#0">
-                  <i className="bi bi-telephone-fill">+92-318 048 1998</i> 
+                  <i className="bi bi-telephone-fill">+92-318 048 1998</i>
                 </a>
               </li>
               <li className="mb-2">
                 <a href="mailto:binmukhtarco@gmail.com">
-                  <i className="bi bi-envelope-at-fill">binmukhtarco@gmail.com</i> 
+                  <i className="bi bi-envelope-at-fill">
+                    binmukhtarco@gmail.com
+                  </i>
                 </a>
-             
               </li>
             </ul>
           </div>
@@ -132,7 +138,6 @@ const Footer = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10823.120414694546!2d71.65043933161311!3d29.540050045567973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922f8b2bc8ea9a7%3A0x92059e7da2d949e0!2sLodhran%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1668694705539!5m2!1sen!2sus"
                 allowFullScreen=""
                 loading="lazy"
-                
               ></Iframe>
             </div>
           </div>
@@ -180,6 +185,5 @@ const Footer = () => {
     </div>
   );
 };
-
 
 export default Footer;

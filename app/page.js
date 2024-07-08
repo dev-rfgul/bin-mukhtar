@@ -24,14 +24,14 @@ const page = () => {
         heading={"Welcome to Bin Mukhtar and Co"}
         secondaryHeading={"Leading Corporate Consultant  in Pakistan"}
         thirdHeading={
-          "We are a full-service corporate firm in Pakistan with a team of experienced charted accountants."
-        }
-        paragraph={
           "We provide legal services in Pakistan and UAE. Our services include Incorporation and Trademark Registration in Pakistan and UAE."
         }
+        paragraph={""}
         buttonText="Contact Us  "
         imagePosition={"right"}
-        imgSrc="./images/15-1.png"
+        imgSrc="./images/primary-pic-new.png"
+
+        // orange pic is finalezee
       />
       {/* services component */}
       <Testimonials buttonText="View all services " />
@@ -56,8 +56,6 @@ const page = () => {
         textArray={["", "", "", ""]}
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       />
-
-
 
       <Collaborator />
       <Banner

@@ -16,7 +16,7 @@ const Banner = ({
         <div className="row  bg-secondary p-9 ">
           {imagePosition === "left" && (
             <div className="col3  p-5">
-              <img className="min-h-full img" src={imgSrc} alt="Image" />
+              <img className="min-h-full  img" src={imgSrc} alt="Image" />
             </div>
           )}
           <div className="col7 text-5xl p-5">
@@ -45,11 +45,8 @@ const Banner = ({
                   rel="noopener noreferrer"
                 >
                   {buttonText}
-                
                 </a>
               </button>
-
-              
             </div>
           </div>
           {imagePosition === "right" && (
