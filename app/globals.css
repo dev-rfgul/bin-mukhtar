@@ -10,7 +10,7 @@ body{
   box-sizing: border-box;
 }
 .row {
-  margin-top: 80px;
+  /* margin-top: 80px; */
   height: 85vh;
   padding: 0% 5%;
   display: flex;

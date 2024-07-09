@@ -100,11 +100,10 @@
 
 
 
-
-
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 const HomePage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -123,41 +122,32 @@ const HomePage = () => {
         <div className="hidden md:flex m-4">  
           <ul className="flex space-x-11">
             <li className="text-md">
-              <a className="hover:text-gray-700" href="/">
+              <Link className="hover:text-gray-700" href="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="text-md">
-              <a className="hover:text-gray-700" href="/blogs">
-                About Us
-              </a>
+              <Link className="hover:text-gray-700" href="/blogs">
+                Blogs
+              </Link>
             </li>
             <li className="text-md">
-              <a className="hover:text-gray-700" href="/Services">
+              <Link className="hover:text-gray-700" href="/Services">
                 Services
-              </a>
+              </Link>
             </li>
             <li className="text-md">
-              <a className="hover:text-gray-700" href="/Contact">
-                Testimonials
-              </a>
+              <Link className="hover:text-gray-700" href="/tools">
+                Tools
+              </Link>
             </li>
             <li className="text-md">
-              <a className="hover:text-gray-700" href="/Contact">
+              <Link className="hover:text-gray-700" href="/Contact">
                 Contact Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-
-        {/* <div className="hidden md:flex m-4">
-          <button className="mr-4 bg-blue-300 hover:bg-blue-400 hover:font-extrabold rounded-md text-black h-9 w-24">
-            Login
-          </button>
-          <button className="border-2 border-sky-500 hover:border-black font-bold rounded-md h-9 w-24 hover:bg-blue-300">
-            Sign up
-          </button>
-        </div> */}
 
         <div className="md:hidden m-4 flex items-center">
           <button onClick={toggleMenu} className="text-xl">
@@ -170,40 +160,30 @@ const HomePage = () => {
         <div className="md:hidden bg-white text-black px-11 py-4">
           <ul>
             <li className="py-2 border-b border-gray-300">
-              <a className="block hover:text-gray-700" href="/">
+              <Link className="block hover:text-gray-700" href="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="py-2 border-b border-gray-300">
-              <a className="block hover:text-gray-700" href="/Tools">
+              <Link className="block hover:text-gray-700" href="/Tools">
                 Tools
-              </a>
+              </Link>
             </li> 
             <li className="py-2 border-b border-gray-300">
-              <a className="block hover:text-gray-700" href="/Services">
+              <Link className="block hover:text-gray-700" href="/Services">
                 Services
-              </a>
+              </Link>
             </li>
             <li className="py-2 border-b border-gray-300">
-              <a className="block hover:text-gray-700" href="#">
+              <Link className="block hover:text-gray-700" href="#">
                 
-              </a>
+              </Link>
             </li>
             <li className="py-2 border-b border-gray-300">
-              <a className="block hover:text-gray-700" href="/Contact">
+              <Link className="block hover:text-gray-700" href="/Contact">
                 Contact Us
-              </a>
+              </Link>
             </li>
-            {/* <li className="py-2">
-              <button className="w-full bg-blue-300 hover:bg-blue-400 hover:font-extrabold rounded-md text-black h-9">
-                Login
-              </button>
-            </li>
-            <li className="py-2">
-              <button className="w-full border-2 border-sky-500 hover:border-black font-bold rounded-md h-9 hover:bg-blue-300">
-                Sign up
-              </button>
-            </li> */}
           </ul>
         </div>
       )}

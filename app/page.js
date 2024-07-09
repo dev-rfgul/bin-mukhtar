@@ -29,7 +29,7 @@ const page = () => {
         paragraph={""}
         buttonText="Contact Us  "
         imagePosition={"right"}
-        imgSrc="./images/primary-pic-new.png"
+         imgSrc="/images/primary-pic-new (1).png"
 
         // orange pic is finalezee
       />
