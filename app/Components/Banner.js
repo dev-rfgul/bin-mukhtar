@@ -91,7 +91,7 @@ const Banner = ({
           <span className="block text-4xl text-black-100 mb-2">
             {secondaryHeading}
           </span>
-          <span className="block text-3xl mb-2">{thirdHeading}</span>
+          <span className="block  mb-2">{thirdHeading}</span>
           <p className="text-lg mb-4">
             {paragraph} <br />
             {paragraph2}

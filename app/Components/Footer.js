@@ -110,10 +110,20 @@ const Footer = () => {
             <ul className="list-none">
               <li className="mb-2">
                 <a href="#0">
-                  <i className="bi bi-geo-alt-fill">Commercial Plaza Multan</i> <br></br>
-                  <i className="bi bi-geo-alt-fill">Commercial Plaza bwp</i> <br></br>
-                  <i className="bi bi-geo-alt-fill">Commercial Plaza lahpre</i> 
-                  
+                  <i className="bi bi-geo-alt-fill">
+                    Capital Plaza, street #7 , Soan Gardens, Block D, Islamabad,
+                    Punjab
+                  </i>{" "}
+                  <br></br> <br></br>
+                  <i className="bi bi-geo-alt-fill">
+                    Commercial Plaza bwp
+                  </i>{" "}
+                  <br></br> <br></br>
+                  <i className="bi bi-geo-alt-fill">
+                    Bin Mukhtar and Co , Near Shalimar Metro Station, Hans Road
+                    , Hans Street Multan
+                  </i>{" "}
+                  <br></br>
                 </a>
               </li>
               <li className="mb-2">

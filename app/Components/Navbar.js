@@ -84,7 +84,7 @@
 //                     as="/Contact"
 //                     onClick={() => setNavbar(!navbar)}
 //                   >
-//                     Contact 
+//                     Contact
 //                   </Link>
 //                 </li>
 //               </ul>
@@ -97,8 +97,6 @@
 // }
 
 // export default NavBar;
-
-
 
 "use client";
 
@@ -115,11 +113,15 @@ const HomePage = () => {
   return (
     <div>
       <div className="flex justify-between pl-11 pr-11 h-16 text-center bg-primary text-white">
-        <div>
-          <img className="w-1/2" src="/images/logo-n4 (2).png" alt="logo" />
+        <div className="flex items-center">
+          <img
+            className="w-2/3 sm:w-1/2 md:w-1/3"
+            src="/images/logo-n4 (2).png"
+            alt="logo"
+          />
         </div>
 
-        <div className="hidden md:flex m-4">  
+        <div className="hidden md:flex m-4">
           <ul className="flex space-x-11">
             <li className="text-md">
               <Link className="hover:text-gray-700" href="/">
@@ -168,16 +170,14 @@ const HomePage = () => {
               <Link className="block hover:text-gray-700" href="/Tools">
                 Tools
               </Link>
-            </li> 
+            </li>
             <li className="py-2 border-b border-gray-300">
               <Link className="block hover:text-gray-700" href="/Services">
                 Services
               </Link>
             </li>
             <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="#">
-                
-              </Link>
+              <Link className="block hover:text-gray-700" href="#"></Link>
             </li>
             <li className="py-2 border-b border-gray-300">
               <Link className="block hover:text-gray-700" href="/Contact">

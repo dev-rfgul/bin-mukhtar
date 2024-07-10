@@ -168,7 +168,6 @@
 
 // export default Testimonials;
 
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -239,29 +238,25 @@ const Testimonials = ({ buttonText }) => {
 
   return (
     <div className="max-w-screen-lg mx-auto p-4 relative">
-      <h1 className="text-6xl text-primary font-bold text-center">Services</h1>
+      <h1 className="text-4xl md:text-6xl text-primary font-bold text-center">Services</h1>
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(${-currentIndex * 70}%)` }}
+          style={{ transform: `translateX(${-currentIndex * 100}%)` }}
         >
           {testimonialData.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="w-1/3 flex-shrink-0 flex flex-col items-center justify-center col3"
+              className="w-full md:w-1/3 flex-shrink-0 flex flex-col items-center justify-center p-4"
             >
-              <div className="neumorphism flex-col text-center items-center justify-center">
-                <h3 className="text-2xl font-semibold text-primary">
+              <div className="neumorphism p-6 rounded-lg flex flex-col text-center items-center justify-center">
+                <h3 className="text-xl md:text-2xl font-semibold text-primary">
                   {testimonial.name}
                 </h3>
-                <br />
-                <br />
-                <p className="text-gray-600">{testimonial.text}</p>
-                <br />
-                <br />
-                <button className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
+                <p className="text-gray-600 mt-4">{testimonial.text}</p>
+                <button className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out mt-6">
                   <a
-                    href="https://wa.me/923180481998?text=Hello, I am "
+                    href="https://wa.me/923180481998?text=Hello , I am"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -272,14 +267,12 @@ const Testimonials = ({ buttonText }) => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center items-center h-full">
-          <div>
-            <button className="button glow-button text-2xl font-bold hover:shadow hover:text-white bg-primary text-white p-2 rounded-lg mt-4">
-              <Link href="/Services" as="/Services">
-                {buttonText}
-              </Link>
-            </button>
-          </div>
+        <div className="flex justify-center items-center h-full mt-8">
+          <button className="button glow-button text-lg md:text-2xl font-bold hover:shadow hover:text-white bg-primary text-white py-2 px-4 rounded-lg">
+            <Link href="/Services" as="/Services">
+              {buttonText}
+            </Link>
+          </button>
         </div>
       </div>
 
@@ -291,7 +284,7 @@ const Testimonials = ({ buttonText }) => {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-0 top-1/2 transform -translate-y-1/3 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r hidden md:block"
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r hidden md:block"
       >
         Next
       </button>
