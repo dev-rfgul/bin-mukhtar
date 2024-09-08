@@ -29,9 +29,9 @@ const page = () => {
         paragraph={""}
         buttonText="Contact Us  "
         imagePosition={"right"}
-         imgSrc="/images/primary-pic-new (1).png"
+        imgSrc="/images/primary-pic-new (1).png"
 
-        // orange pic is finalezee
+      // orange pic is finalezee
       />
       {/* services component */}
       <Testimonials buttonText="View all services " />
