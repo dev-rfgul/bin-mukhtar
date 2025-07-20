@@ -13,6 +13,7 @@ import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
 import Contact from "./Contact/Contact";
+import Blogs from "./Components/Blogs";
 // import BlogPost from "./1stBlog/BlogPost";
 
 const page = () => {
@@ -36,7 +37,7 @@ const page = () => {
       {/* services component */}
       <Testimonials buttonText="View all services " />
 
-      <Awards
+      {/* <Awards
         imgHeight={"w-full"}
         heading=" Featured Blogs"
         buttonText={"Read More"}
@@ -55,8 +56,8 @@ const page = () => {
         ]}
         textArray={["", "", "", ""]}
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
-      />
-
+      /> */}
+      <Blogs />
       <Collaborator />
       <Banner
         heading="Say hello to the app that made everything even more convenient"
