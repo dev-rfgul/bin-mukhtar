@@ -70,28 +70,7 @@ const page = () => {
 
       <FeatureVideos/>
       <Team />
-      <Awards
-        imgHeight={"w-1/3"}
-        heading="Awards"
-        imgSrcArray={[
-          "./images/awards_1.png",
-          "./images/awards_2.png",
-          "./images/awards_3.png",
-          "./images/awards_4.png",
-        ]}
-        headingArray={[
-          "Won 2023 Startup",
-          "Rated 4.6 Stars",
-          "Online E-file Provider",
-          "Safe & Secure",
-        ]}
-        textArray={[
-          "of the year award, from PDA Pakistan Digital Awards",
-          "12,000+ reviews and 4.6 rating by satisfied customers",
-          "who has completed sandbox testing with FBR-IRIS",
-          "your information is private and secure on our site",
-        ]}
-      />
+      <Awards/>
       <Contact />
       <Footer />
       {/* <BlogPost/> */}
