@@ -1,60 +1,3 @@
-// import React from "react";
-
-// const Blogs = ({ imgSrcArray, headingArray, textArray }) => {
-//   return (
-//     <div>
-//       <div className="section bg-red">
-//         <h1 className="text-6xl text-primary font-bold text-center">
-//           Recent Blogs
-//         </h1>
-//         <div className="row flex flex-wrap">
-//           {imgSrcArray.map((imgSrc, index) => (
-//             <div
-//               key={index}
-//               className="col3 flex flex-col justify-center items-center text-center neumorphism "
-//             >
-//               {index < 9 && ( // Only render the heading for the first row
-//                 <h1 className="font-bold p-4">{headingArray[index]}</h1>
-//               )}
-//               <img src={imgSrc} alt={`Blog ${index + 1}`} />
-//               <p className="p-4">{textArray[index]}</p>
-//             </div>
-//           ))}
-//         </div>
-//           {/* <div className="row flex flex-wrap">
-//             {imgSrcArray.map((imgSrc, index) => (
-//               <div
-//                 key={index}
-//                 className="col3 flex flex-col justify-center items-center text-center neumorphism "
-//               >
-//                 {index < 9 && ( // Only render the heading for the first row
-//                   <h1 className="font-bold p-4">{headingArray[index]}</h1>
-//                 )}
-//                 <img src={imgSrc} alt={`Blog ${index + 1}`} />
-//                 <p className="p-4">{textArray[index]}</p>
-//               </div>
-//             ))}
-//           </div>
-//           <div className="row flex flex-wrap">
-//             {imgSrcArray.map((imgSrc, index) => (
-//               <div
-//                 key={index}
-//                 className="col3 flex flex-col justify-center items-center text-center neumorphism "
-//               >
-//                 {index < 9 && ( // Only render the heading for the first row
-//                   <h1 className="font-bold p-4">{headingArray[index]}</h1>
-//                 )}
-//                 <img src={imgSrc} alt={`Blog ${index + 1}`} />
-//                 <p className="p-4">{textArray[index]}</p>
-//               </div>
-//             ))}
-//           </div> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Blogs;
 
 import React, { useState } from "react";
 
@@ -87,7 +30,7 @@ const Blogs = ({
   const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
-    <div className="bg-secondary py-16 px-4 relative overflow-hidden">
+    <div className=" py-16 px-4 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
@@ -96,12 +39,12 @@ const Blogs = ({
         {/* Enhanced Header Section */}
         <div className="text-center mb-16 relative">
           <div className="inline-block">
-            <h1 className="text-4xl lg:text-6xl text-primary font-bold mb-4 relative">
+            <h1 className="text-4xl lg:text-6xl text-white   font-bold mb-4 relative">
               Recent Blogs
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></div>
             </h1>
           </div>
-          <p className="text-gray-600 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-100 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
             Stay informed with our latest insights, tips, and updates on tax matters, 
             business regulations, and financial planning strategies.
           </p>
@@ -116,26 +59,23 @@ const Blogs = ({
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Card gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"></div>
-              
               {/* Image Section */}
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden z-20">
                 <img 
                   src={imgSrc} 
                   alt={`Blog ${index + 1}`} 
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110 relative z-10"
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
                 
                 {/* Read time badge */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 z-30">
                   <span className="text-sm font-medium text-gray-700">5 min read</span>
                 </div>
               </div>
 
               {/* Content Section */}
-              <div className="p-6 relative z-20">
+              <div className="p-6 relative z-30">
                 {/* Blog Category */}
                 <div className="mb-3">
                   <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
@@ -184,7 +124,7 @@ const Blogs = ({
               </div>
 
               {/* Hover effect indicator */}
-              <div className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-500 ${
+              <div className={`absolute bottom-0 left-0 h-1 bg-transparent transition-all duration-500 ${
                 hoveredCard === index ? 'w-full' : 'w-0'
               }`}></div>
             </article>
@@ -193,7 +133,7 @@ const Blogs = ({
 
         {/* View All Blogs Button */}
         <div className="text-center mt-12">
-          <button className="bg-primary text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2">
+          <button className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2">
             <span>View All Blogs</span>
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/>

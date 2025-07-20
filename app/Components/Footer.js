@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="bg-primary   text-white">
+    <div className="  text-white">
       <div className="container  mx-auto py-12 flex justify-center items-center text-center">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* logo here */}

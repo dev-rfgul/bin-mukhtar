@@ -21,7 +21,7 @@ const Collaborator = ({
   const [hoveredPartner, setHoveredPartner] = useState(null);
 
   return (
-    <div className="bg-white py-16 px-4 relative overflow-hidden">
+    <div className=" py-16 px-4 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary rounded-full blur-2xl"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
@@ -31,12 +31,12 @@ const Collaborator = ({
         {/* Enhanced Header Section */}
         <div className="text-center mb-16 relative">
           <div className="inline-block">
-            <h1 className="text-4xl lg:text-6xl text-primary font-bold mb-4 relative">
+            <h1 className="text-4xl text-white lg:text-6xl text-primary font-bold mb-4 relative">
               Partners and Collaborators
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1  rounded-full"></div>
             </h1>
           </div>
-          <p className="text-gray-600 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-100 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
             We collaborate with industry-leading organizations to provide comprehensive
             solutions and deliver exceptional value to our clients worldwide.
           </p>
@@ -62,7 +62,7 @@ const Collaborator = ({
                   className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110"
                 />
               </div>
-
+          
             </div>
           ))}
         </div>
@@ -87,6 +87,11 @@ const Collaborator = ({
                   className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110"
                 />
               </div>
+
+
+              {/* Hover effect indicator */}
+              <div className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-500 ${hoveredPartner === index + 7 ? 'w-full' : 'w-0'
+                }`}></div>
             </div>
           ))}
         </div>
@@ -112,21 +117,7 @@ const Collaborator = ({
           </div>
         </div>
 
-        {/* Partnership CTA */}
-        <div className="text-center mt-12">
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Interested in Partnership?</h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              Join our network of trusted partners and expand your reach while providing enhanced value to your clients.
-            </p>
-            <button className="bg-primary text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2">
-              <span>Become a Partner</span>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-          </div>
-        </div>
+
       </div>
     </div>
   );

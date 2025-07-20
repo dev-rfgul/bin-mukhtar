@@ -22,7 +22,7 @@ const MyCognitoFormComponent = () => {
   return (
     <div>
       <h2></h2>
-      <div id="cognito-form-container" className="cognito neumorphism "></div> {/* Container for the form */}
+      <div id="cognito-form-container" className=" neumorphism "></div> {/* Container for the form */}
     </div>
   );
 };

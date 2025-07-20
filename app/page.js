@@ -1,5 +1,6 @@
 "use client";
 import { ToastContainer, toast } from "react-toastify";
+import useSmoothScroll from './config/useSmoothScroll';
 import "react-toastify/dist/ReactToastify.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import React from "react";
@@ -17,8 +18,9 @@ import Blogs from "./Components/Blogs";
 // import BlogPost from "./1stBlog/BlogPost";
 
 const page = () => {
+  useSmoothScroll();
   return (
-    <div>
+    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       <Navbar />
       {/* <Animation /> */}
       <Banner
@@ -34,6 +36,7 @@ const page = () => {
 
       // orange pic is finalezee
       />
+        <Blogs />
       {/* services component */}
       <Testimonials buttonText="View all services " />
 
@@ -57,21 +60,20 @@ const page = () => {
         textArray={["", "", "", ""]}
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       /> */}
-      <Blogs />
+    
       <Collaborator />
-      <Banner
+      <Banner 
         heading="Say hello to the app that made everything even more convenient"
         thirdHeading={"1000+ Satisfied customers in Pakistan"}
         buttonText="Contact Us "
         buttonCount={1}
-        imagePosition="left"
         imgSrc="/images/16-1.png"
       />
 
-      <FeatureVideos/>
+      {/* <FeatureVideos/> */}
       <Team />
       <Awards/>
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
       {/* <BlogPost/> */}
       <FixedLogos />
