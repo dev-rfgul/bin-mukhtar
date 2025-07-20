@@ -68,21 +68,7 @@ const page = () => {
         imgSrc="/images/16-1.png"
       />
 
-      <FeatureVideos
-        videoSrcArray={[
-          "https://www.youtube.com/embed/EsjiOF2ruZA?si=rp2CzgKwZccAx-OE",
-          " https://www.youtube.com/embed/nkrx2yS8gmw?si=6oyD2Lc80TRxJ83d",
-          "https://www.youtube.com/embed/LdUg-PJiWPA?si=MnomcaR5_LLd9cPq",
-          "https://www.youtube.com/embed/jG9Rg0SsYpA?si=054gB_RbG3Gfwpcg",
-        ]}
-        headingArray={[
-          "Enforcement of Section 114B of Income Tax Ordinance, 2001 to Enforce Filing of Returns",
-          " How to Become filer in Pakistan | Active Filer Process in Pakistan 2024 | FBR ALT Complete Process",
-          "What is Tax on Salary Income | How to Calculate Tax on Salary | Calculate Withholding Tax on Salary        ",
-          " Income Tax Understanding Two Quick Tips | Income Tax Basic concept | FBR | IRIS",
-        ]}
-        textArray={["", "", "", "", ""]}
-      />
+      <FeatureVideos/>
       <Team />
       <Awards
         imgHeight={"w-1/3"}
