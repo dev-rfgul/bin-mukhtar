@@ -211,7 +211,7 @@ const ScrollServices = () => {
 
                 // Calculate progress (0 to 1)
                 let progress = scrolledDistance / totalScrollDistance;
-                progress = Math.min(1, Math.max(0, progress * 1.5));
+                progress = Math.min(1, Math.max(0, progress * 2));
 
                 // Map progress to card index
                 const totalCards = cards.length;
@@ -288,7 +288,7 @@ const ScrollServices = () => {
             <div
                 ref={sectionRef}
                 className="relative"
-                style={{ height: `${cards.length * 150}vh` }}
+                style={{ height: `${cards.length * 100}vh` }}
             >
                 <div className="sticky top-0 h-screen overflow-hidden">
                     <div className="relative h-full ">

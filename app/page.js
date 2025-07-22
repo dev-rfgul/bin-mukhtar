@@ -39,11 +39,12 @@ const page = () => {
 
       // orange pic is finalezee
       />
+
+      <ScrollServices />
       <Blogs />
       {/* services component */}
       {/* <Testimonials buttonText="View all services " /> */}
 
-      <ScrollServices />
 
       {/* <Awards
         imgHeight={"w-full"}
