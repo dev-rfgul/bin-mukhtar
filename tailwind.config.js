@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         primary: 'var(--color1)',
         secondary: 'var(--color2)',
-        red:'var(--color3)',
+        red: 'var(--color3)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -19,5 +19,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("lightswind/plugin")],
 };

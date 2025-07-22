@@ -16,12 +16,16 @@ import Footer from "./Components/Footer";
 import Contact from "./Contact/Contact";
 import Blogs from "./Components/Blogs";
 // import BlogPost from "./1stBlog/BlogPost";
+import ScrollServices from "./Components/ScrollServices";
 
 const page = () => {
   useSmoothScroll();
+
+
   return (
     <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       <Navbar />
+      <ScrollServices />
       {/* <Animation /> */}
       <Banner
         heading={"Welcome to Bin Mukhtar and Co"}
@@ -36,7 +40,7 @@ const page = () => {
 
       // orange pic is finalezee
       />
-        <Blogs />
+      <Blogs />
       {/* services component */}
       <Testimonials buttonText="View all services " />
 
@@ -60,9 +64,9 @@ const page = () => {
         textArray={["", "", "", ""]}
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       /> */}
-    
+
       <Collaborator />
-      <Banner 
+      <Banner
         heading="Say hello to the app that made everything even more convenient"
         thirdHeading={"1000+ Satisfied customers in Pakistan"}
         buttonText="Contact Us "
@@ -72,7 +76,7 @@ const page = () => {
 
       {/* <FeatureVideos/> */}
       <Team />
-      <Awards/>
+      <Awards />
       {/* <Contact /> */}
       <Footer />
       {/* <BlogPost/> */}
