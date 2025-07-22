@@ -211,8 +211,8 @@ const ScrollServices = () => {
                 
                 // Calculate progress (0 to 1)
                 let progress = scrolledDistance / totalScrollDistance;
-                progress = Math.min(1, Math.max(0, progress));
-                
+                progress = Math.min(1, Math.max(0, progress*1.5));
+
                 // Map progress to card index
                 const totalCards = cards.length;
                 let newCardIndex = Math.floor(progress * totalCards);
@@ -245,7 +245,7 @@ const ScrollServices = () => {
     return (
         <div className="relative">
             {/* Header Section */}
-            <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-800 py-20 px-6">
+            <div className=" py-20 px-6">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full backdrop-blur-sm mb-8">
                         <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
@@ -289,10 +289,10 @@ const ScrollServices = () => {
             <div 
                 ref={sectionRef}
                 className="relative"
-                style={{ height: `${cards.length * 120}vh` }}
+                style={{ height: `${cards.length * 150}vh` }}
             >
                 <div className="sticky top-0 h-screen overflow-hidden">
-                    <div className="relative h-full bg-gradient-to-br from-slate-900 via-blue-950 to-slate-800">
+                    <div className="relative h-full ">
                         {/* Background animation elements */}
                         <div className="absolute inset-0">
                             <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-10 animate-pulse"></div>
