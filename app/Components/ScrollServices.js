@@ -156,7 +156,7 @@ const ScrollServices = () => {
                         <button className="bg-white text-gray-900 font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
                             Contact Support
                         </button>
-                        <a 
+                        <a
                             href="https://wa.me/923180481998?text=Hello, I need urgent assistance"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -181,7 +181,7 @@ const ScrollServices = () => {
                     setIsInViewport(true);
                 }
             },
-            { 
+            {
                 threshold: 0.1,
                 rootMargin: '0px'
             }
@@ -202,24 +202,24 @@ const ScrollServices = () => {
             const rect = sectionRef.current.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
             const sectionHeight = sectionRef.current.offsetHeight;
-            
+
             // Only calculate when the section is in view and being scrolled through
             if (rect.top <= 0 && rect.bottom >= viewportHeight) {
                 // Calculate how much of the section has been scrolled through
                 const scrolledDistance = Math.abs(rect.top);
                 const totalScrollDistance = sectionHeight - viewportHeight;
-                
+
                 // Calculate progress (0 to 1)
                 let progress = scrolledDistance / totalScrollDistance;
-                progress = Math.min(1, Math.max(0, progress*1.5));
+                progress = Math.min(1, Math.max(0, progress * 1.5));
 
                 // Map progress to card index
                 const totalCards = cards.length;
                 let newCardIndex = Math.floor(progress * totalCards);
-                
+
                 // Ensure we don't exceed the last card index
                 newCardIndex = Math.min(newCardIndex, totalCards - 1);
-                
+
                 setCurrentCardIndex(newCardIndex);
                 setIsInViewport(true);
             } else if (rect.top > 0) {
@@ -235,10 +235,10 @@ const ScrollServices = () => {
 
         // Add scroll listener
         window.addEventListener('scroll', handleScroll, { passive: true });
-        
+
         // Initial calculation
         handleScroll();
-        
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, [cards.length]);
 
@@ -251,7 +251,7 @@ const ScrollServices = () => {
                         <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
                         <span className="text-blue-300 text-sm font-medium tracking-wide">OUR SERVICES</span>
                     </div>
-                    
+
                     <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-8">
                         <span className="bg-gradient-to-r from-white via-blue-200 to-emerald-300 bg-clip-text text-transparent">
                             Comprehensive Business
@@ -261,23 +261,22 @@ const ScrollServices = () => {
                             Solutions
                         </span>
                     </h1>
-                    
+
                     <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">
-                        Scroll down to explore our premium services designed to accelerate your business growth 
+                        Scroll down to explore our premium services designed to accelerate your business growth
                         and ensure complete compliance with industry standards.
                     </p>
-                    
+
                     {/* Progress indicator */}
                     <div className="mt-12 flex justify-center">
                         <div className="flex space-x-2">
                             {cards.map((_, index) => (
                                 <div
                                     key={index}
-                                    className={`w-2 h-8 rounded-full transition-all duration-500 ${
-                                        index <= currentCardIndex 
-                                            ? 'bg-emerald-400' 
+                                    className={`w-2 h-8 rounded-full transition-all duration-500 ${index <= currentCardIndex
+                                            ? 'bg-emerald-400'
                                             : 'bg-white/20'
-                                    }`}
+                                        }`}
                                 />
                             ))}
                         </div>
@@ -286,7 +285,7 @@ const ScrollServices = () => {
             </div>
 
             {/* Sticky Cards Section */}
-            <div 
+            <div
                 ref={sectionRef}
                 className="relative"
                 style={{ height: `${cards.length * 150}vh` }}
@@ -300,10 +299,7 @@ const ScrollServices = () => {
                             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500 rounded-full blur-3xl opacity-5 animate-pulse delay-500"></div>
                         </div>
 
-                        {/* Debug info (remove in production) */}
-                        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-30 bg-black/70 text-white px-4 py-2 rounded-lg text-sm">
-                            Card: {currentCardIndex + 1}/{cards.length}
-                        </div>
+                
 
                         {/* Cards Container */}
                         <div className="relative z-10 h-full flex items-center justify-center px-6">
@@ -312,19 +308,18 @@ const ScrollServices = () => {
                                     <div
                                         key={index}
                                         ref={el => cardRefs.current[index] = el}
-                                        className={`absolute inset-0 transition-all duration-1000 ease-out ${
-                                            index === currentCardIndex 
-                                                ? 'opacity-100 translate-y-0 scale-100' 
+                                        className={`absolute inset-0 transition-all duration-1000 ease-out ${index === currentCardIndex
+                                                ? 'opacity-100 translate-y-0 scale-100'
                                                 : index < currentCardIndex
                                                     ? 'opacity-0 -translate-y-20 scale-95'
                                                     : 'opacity-0 translate-y-20 scale-95'
-                                        }`}
+                                            }`}
                                         style={{
                                             transitionDelay: `${index === currentCardIndex ? '0ms' : '200ms'}`
                                         }}
                                     >
                                         <div className="h-full flex items-center justify-center">
-                                            <div 
+                                            <div
                                                 className="relative w-full max-w-5xl h-[80vh] max-h-[600px] rounded-3xl overflow-hidden shadow-2xl"
                                                 style={{
                                                     backgroundImage: `url('${card.backgroundImage}')`,
@@ -334,7 +329,7 @@ const ScrollServices = () => {
                                             >
                                                 {/* Background overlay */}
                                                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
-                                                
+
                                                 {/* Badge */}
                                                 {card.badge && (
                                                     <div className="absolute top-6 right-6 z-20">
@@ -371,13 +366,12 @@ const ScrollServices = () => {
                                 {cards.map((_, index) => (
                                     <div
                                         key={index}
-                                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 cursor-pointer ${
-                                            index === currentCardIndex
+                                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 cursor-pointer ${index === currentCardIndex
                                                 ? 'bg-emerald-400 border-emerald-400 scale-125'
                                                 : index < currentCardIndex
                                                     ? 'bg-emerald-400/50 border-emerald-400/50'
                                                     : 'bg-transparent border-white/30 hover:border-white/50'
-                                        }`}
+                                            }`}
                                         onClick={() => setCurrentCardIndex(index)}
                                     />
                                 ))}
@@ -407,30 +401,7 @@ const ScrollServices = () => {
                 </div>
             </div>
 
-            {/* Bottom CTA Section */}
-            <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-800 py-20 px-6">
-                <div className="max-w-4xl mx-auto text-center">
-                    <div className="inline-flex items-center px-6 py-3 bg-emerald-500/20 border border-emerald-400/30 rounded-full backdrop-blur-sm mb-8">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                        <span className="text-emerald-300 text-sm font-medium tracking-wide">READY TO START?</span>
-                    </div>
-                    
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                        Ready to Get Started?
-                    </h2>
-                    <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-                        Choose the service that best fits your needs or contact us for a custom solution.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <button className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold px-10 py-4 rounded-2xl hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300">
-                            Schedule Consultation
-                        </button>
-                        <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold px-10 py-4 rounded-2xl hover:bg-white/20 transform hover:scale-105 transition-all duration-300">
-                            View All Services
-                        </button>
-                    </div>
-                </div>
-            </div>
+
 
             {/* Custom Styles */}
             <style jsx>{`
