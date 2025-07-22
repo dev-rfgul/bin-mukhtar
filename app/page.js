@@ -25,7 +25,6 @@ const page = () => {
   return (
     <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       <Navbar />
-      <ScrollServices />
       {/* <Animation /> */}
       <Banner
         heading={"Welcome to Bin Mukhtar and Co"}
@@ -42,7 +41,9 @@ const page = () => {
       />
       <Blogs />
       {/* services component */}
-      <Testimonials buttonText="View all services " />
+      {/* <Testimonials buttonText="View all services " /> */}
+
+      <ScrollServices />
 
       {/* <Awards
         imgHeight={"w-full"}
