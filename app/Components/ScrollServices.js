@@ -217,17 +217,14 @@ const ScrollServices = () => {
                 
                 // Calculate which cards are currently active and transition progress
                 const totalCards = cards.length;
-                const progressPerCard = 1 / (totalCards - 1); // -1 because last card doesn't need transition
+                const progressPerCard = 1 / totalCards; // Remove -1 to give each card equal space
                 
                 // Find current card index and local progress within that card
-                let newCardIndex = Math.floor(overallProgress / progressPerCard);
-                let localProgress = (overallProgress % progressPerCard) / progressPerCard;
+                let newCardIndex = Math.floor(overallProgress * totalCards);
+                let localProgress = (overallProgress * totalCards) % 1;
                 
                 // Handle edge cases
-                if (overallProgress >= 1) {
-                    newCardIndex = totalCards - 1;
-                    localProgress = 1;
-                } else if (newCardIndex >= totalCards - 1) {
+                if (overallProgress >= 1 || newCardIndex >= totalCards) {
                     newCardIndex = totalCards - 1;
                     localProgress = 1;
                 }
@@ -342,14 +339,14 @@ const ScrollServices = () => {
                                     
                                     if (index === currentCardIndex) {
                                         // Current card - moves up as scroll progresses
-                                        cardOpacity = 1 - scrollProgress * 0.3; // Fade slightly as next card appears
+                                        cardOpacity = 1 - scrollProgress * 0.3;
                                         cardTransform = `translateY(-${scrollProgress * 50}%) scale(${1 - scrollProgress * 0.05})`;
                                         cardZIndex = 10;
-                                    } else if (index === currentCardIndex + 1 && index < cards.length) {
-                                        // Next card - slides up from bottom
+                                    } else if (index === currentCardIndex + 1 && currentCardIndex < cards.length - 1) {
+                                        // Next card - slides up from bottom (only if not the last card)
                                         cardOpacity = scrollProgress;
                                         cardTransform = `translateY(${(1 - scrollProgress) * 100}%) scale(${0.95 + scrollProgress * 0.05})`;
-                                        cardZIndex = 15; // Higher z-index so it appears on top
+                                        cardZIndex = 15;
                                     } else if (index < currentCardIndex) {
                                         // Previous cards - hidden above
                                         cardOpacity = 0;
@@ -360,6 +357,13 @@ const ScrollServices = () => {
                                         cardOpacity = 0;
                                         cardTransform = 'translateY(100%) scale(0.95)';
                                         cardZIndex = 5;
+                                    }
+                                    
+                                    // Special handling for the last card
+                                    if (index === cards.length - 1 && currentCardIndex === cards.length - 1) {
+                                        cardOpacity = 1;
+                                        cardTransform = 'translateY(0%) scale(1)';
+                                        cardZIndex = 20;
                                     }
                                     
                                     return (
