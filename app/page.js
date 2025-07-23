@@ -9,8 +9,6 @@ import Awards from "./Components/Awards";
 import Collaborator from "./Components/Collaborator";
 import Banner from "./Components/Banner";
 import Team from "./Components/Team";
-import FeatureVideos from "./Components/FeatureVideos";
-import Testimonials from "./Components/Testimonials";
 import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
 import Contact from "./Contact/Contact";
