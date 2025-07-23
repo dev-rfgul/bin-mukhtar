@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
-import ScrollStack from '../../src/components/lightswind/scroll-stack';
 
 const ScrollServices = () => {
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [isInViewport, setIsInViewport] = useState(false);
+    const [isScrolling, setIsScrolling] = useState(false);
     const sectionRef = useRef(null);
     const cardRefs = useRef([]);
+    const scrollTimeoutRef = useRef(null);
+    const lastScrollTimeRef = useRef(0);
 
+ 
     const cards = [
         {
             title: 'Tax Planning & Compliance',
@@ -175,8 +178,6 @@ const ScrollServices = () => {
         const observer = new IntersectionObserver(
             (entries) => {
                 const [entry] = entries;
-                // We'll handle the viewport logic in the scroll handler
-                // This is just for initial setup
                 if (entry.isIntersecting) {
                     setIsInViewport(true);
                 }
@@ -194,7 +195,10 @@ const ScrollServices = () => {
         return () => observer.disconnect();
     }, []);
 
-    // Handle scroll to show cards sequentially
+    // Add scroll progress state for smooth transitions
+    const [scrollProgress, setScrollProgress] = useState(0);
+
+    // Controlled scroll handler with smooth progress tracking
     useEffect(() => {
         const handleScroll = () => {
             if (!sectionRef.current) return;
@@ -203,56 +207,66 @@ const ScrollServices = () => {
             const viewportHeight = window.innerHeight;
             const sectionHeight = sectionRef.current.offsetHeight;
 
-            // Only calculate when the section is in view and being scrolled through
+            // Only calculate when the section is in view
             if (rect.top <= 0 && rect.bottom >= viewportHeight) {
-                // Calculate how much of the section has been scrolled through
                 const scrolledDistance = Math.abs(rect.top);
                 const totalScrollDistance = sectionHeight - viewportHeight;
-
-                // Calculate progress (0 to 1)
-                let progress = scrolledDistance / totalScrollDistance;
-                progress = Math.min(1, Math.max(0, progress * 2));
-
-                // Map progress to card index
+                
+                // Calculate overall progress (0 to 1)
+                const overallProgress = Math.min(1, Math.max(0, scrolledDistance / totalScrollDistance));
+                
+                // Calculate which cards are currently active and transition progress
                 const totalCards = cards.length;
-                let newCardIndex = Math.floor(progress * totalCards);
-
-                // Ensure we don't exceed the last card index
-                newCardIndex = Math.min(newCardIndex, totalCards - 1);
-
+                const progressPerCard = 1 / (totalCards - 1); // -1 because last card doesn't need transition
+                
+                // Find current card index and local progress within that card
+                let newCardIndex = Math.floor(overallProgress / progressPerCard);
+                let localProgress = (overallProgress % progressPerCard) / progressPerCard;
+                
+                // Handle edge cases
+                if (overallProgress >= 1) {
+                    newCardIndex = totalCards - 1;
+                    localProgress = 1;
+                } else if (newCardIndex >= totalCards - 1) {
+                    newCardIndex = totalCards - 1;
+                    localProgress = 1;
+                }
+                
                 setCurrentCardIndex(newCardIndex);
+                setScrollProgress(localProgress);
                 setIsInViewport(true);
             } else if (rect.top > 0) {
                 // Section hasn't been reached yet
                 setCurrentCardIndex(0);
+                setScrollProgress(0);
                 setIsInViewport(false);
             } else if (rect.bottom < viewportHeight) {
                 // Section has been completely scrolled past
                 setCurrentCardIndex(cards.length - 1);
+                setScrollProgress(1);
                 setIsInViewport(false);
             }
         };
 
-        // Add scroll listener
         window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial calculation
 
-        // Initial calculation
-        handleScroll();
-
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, [cards.length]);
 
     return (
         <div className="relative">
             {/* Header Section */}
-            <div className=" py-20 px-6">
+            <div className="py-12 md:py-20 px-4 md:px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <div className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full backdrop-blur-sm mb-8">
+                    <div className="inline-flex items-center px-4 md:px-6 py-2 md:py-3 bg-blue-500/20 border border-blue-400/30 rounded-full backdrop-blur-sm mb-6 md:mb-8">
                         <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                        <span className="text-blue-300 text-sm font-medium tracking-wide">OUR SERVICES</span>
+                        <span className="text-blue-300 text-xs md:text-sm font-medium tracking-wide">OUR SERVICES</span>
                     </div>
 
-                    <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-8">
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 md:mb-8">
                         <span className="bg-gradient-to-r from-white via-blue-200 to-emerald-300 bg-clip-text text-transparent">
                             Comprehensive Business
                         </span>
@@ -262,23 +276,41 @@ const ScrollServices = () => {
                         </span>
                     </h1>
 
-                    <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">
+                    <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed px-4">
                         Scroll down to explore our premium services designed to accelerate your business growth
                         and ensure complete compliance with industry standards.
                     </p>
 
                     {/* Progress indicator */}
-                    <div className="mt-12 flex justify-center">
+                    <div className="mt-8 md:mt-12 flex justify-center">
                         <div className="flex space-x-2">
-                            {cards.map((_, index) => (
-                                <div
-                                    key={index}
-                                    className={`w-2 h-8 rounded-full transition-all duration-500 ${index <= currentCardIndex
-                                            ? 'bg-emerald-400'
-                                            : 'bg-white/20'
-                                        }`}
-                                />
-                            ))}
+                            {cards.map((_, index) => {
+                                let barHeight = 'h-6 md:h-8';
+                                let barColor = 'bg-white/20';
+                                
+                                if (index < currentCardIndex) {
+                                    barColor = 'bg-emerald-400';
+                                } else if (index === currentCardIndex) {
+                                    barColor = scrollProgress > 0.5 ? 'bg-emerald-400/70' : 'bg-emerald-400';
+                                } else if (index === currentCardIndex + 1 && scrollProgress > 0.5) {
+                                    barColor = 'bg-emerald-400/50';
+                                }
+                                
+                                return (
+                                    <div key={index} className="relative">
+                                        <div
+                                            className={`w-2 ${barHeight} rounded-full transition-all duration-500 ${barColor}`}
+                                        />
+                                        {/* Progress fill for current transition */}
+                                        {index === currentCardIndex && scrollProgress > 0 && (
+                                            <div 
+                                                className="absolute bottom-0 left-0 w-2 bg-blue-400 rounded-full transition-all duration-300"
+                                                style={{ height: `${scrollProgress * 32}px` }}
+                                            />
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -291,108 +323,184 @@ const ScrollServices = () => {
                 style={{ height: `${cards.length * 100}vh` }}
             >
                 <div className="sticky top-0 h-screen overflow-hidden">
-                    <div className="relative h-full ">
+                    <div className="relative h-full">
                         {/* Background animation elements */}
                         <div className="absolute inset-0">
-                            <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-10 animate-pulse"></div>
-                            <div className="absolute bottom-20 right-20 w-80 h-80 bg-emerald-500 rounded-full blur-3xl opacity-10 animate-pulse delay-1000"></div>
-                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500 rounded-full blur-3xl opacity-5 animate-pulse delay-500"></div>
+                            <div className="absolute top-10 md:top-20 left-10 md:left-20 w-48 h-48 md:w-96 md:h-96 bg-blue-500 rounded-full blur-3xl opacity-10 animate-pulse"></div>
+                            <div className="absolute bottom-10 md:bottom-20 right-10 md:right-20 w-40 h-40 md:w-80 md:h-80 bg-emerald-500 rounded-full blur-3xl opacity-10 animate-pulse delay-1000"></div>
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[600px] md:h-[600px] bg-purple-500 rounded-full blur-3xl opacity-5 animate-pulse delay-500"></div>
                         </div>
 
-                
-
                         {/* Cards Container */}
-                        <div className="relative z-10 h-full flex items-center justify-center px-6">
-                            <div className="w-full max-w-6xl mx-auto">
-                                {cards.map((card, index) => (
-                                    <div
-                                        key={index}
-                                        ref={el => cardRefs.current[index] = el}
-                                        className={`absolute inset-0 transition-all duration-1000 ease-out ${index === currentCardIndex
-                                                ? 'opacity-100 translate-y-0 scale-100'
-                                                : index < currentCardIndex
-                                                    ? 'opacity-0 -translate-y-20 scale-95'
-                                                    : 'opacity-0 translate-y-20 scale-95'
-                                            }`}
-                                        style={{
-                                            transitionDelay: `${index === currentCardIndex ? '0ms' : '200ms'}`
-                                        }}
-                                    >
-                                        <div className="h-full flex items-center justify-center">
-                                            <div
-                                                className="relative w-full max-w-5xl h-[80vh] max-h-[600px] rounded-3xl overflow-hidden shadow-2xl"
-                                                style={{
-                                                    backgroundImage: `url('${card.backgroundImage}')`,
-                                                    backgroundSize: 'cover',
-                                                    backgroundPosition: 'center',
-                                                }}
-                                            >
-                                                {/* Background overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+                        <div className="relative z-10 h-full flex items-center justify-center px-3 md:px-6">
+                            <div className="w-full max-w-6xl mx-auto relative h-full">
+                                {cards.map((card, index) => {
+                                    // Determine visibility and positioning for each card
+                                    let cardOpacity = 0;
+                                    let cardTransform = '';
+                                    let cardZIndex = 0;
+                                    
+                                    if (index === currentCardIndex) {
+                                        // Current card - moves up as scroll progresses
+                                        cardOpacity = 1 - scrollProgress * 0.3; // Fade slightly as next card appears
+                                        cardTransform = `translateY(-${scrollProgress * 50}%) scale(${1 - scrollProgress * 0.05})`;
+                                        cardZIndex = 10;
+                                    } else if (index === currentCardIndex + 1 && index < cards.length) {
+                                        // Next card - slides up from bottom
+                                        cardOpacity = scrollProgress;
+                                        cardTransform = `translateY(${(1 - scrollProgress) * 100}%) scale(${0.95 + scrollProgress * 0.05})`;
+                                        cardZIndex = 15; // Higher z-index so it appears on top
+                                    } else if (index < currentCardIndex) {
+                                        // Previous cards - hidden above
+                                        cardOpacity = 0;
+                                        cardTransform = 'translateY(-100%) scale(0.95)';
+                                        cardZIndex = 5;
+                                    } else {
+                                        // Future cards - hidden below
+                                        cardOpacity = 0;
+                                        cardTransform = 'translateY(100%) scale(0.95)';
+                                        cardZIndex = 5;
+                                    }
+                                    
+                                    return (
+                                        <div
+                                            key={index}
+                                            ref={el => cardRefs.current[index] = el}
+                                            className="absolute inset-0 transition-all duration-300 ease-out"
+                                            style={{
+                                                opacity: cardOpacity,
+                                                transform: cardTransform,
+                                                zIndex: cardZIndex
+                                            }}
+                                        >
+                                            <div className="h-full flex items-center justify-center">
+                                                <div
+                                                    className="relative w-full max-w-5xl h-[70vh] md:h-[80vh] max-h-[500px] md:max-h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
+                                                    style={{
+                                                        backgroundImage: `url('${card.backgroundImage}')`,
+                                                        backgroundSize: 'cover',
+                                                        backgroundPosition: 'center',
+                                                    }}
+                                                >
+                                                    {/* Background overlay */}
+                                                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
 
-                                                {/* Badge */}
-                                                {card.badge && (
-                                                    <div className="absolute top-6 right-6 z-20">
-                                                        <div className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                                                            <span className="text-white font-semibold text-sm">{card.badge}</span>
+                                                    {/* Badge */}
+                                                    {card.badge && (
+                                                        <div className="absolute top-4 md:top-6 right-4 md:right-6 z-20">
+                                                            <div className="px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+                                                                <span className="text-white font-semibold text-xs md:text-sm">{card.badge}</span>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Card number indicator */}
+                                                    <div className="absolute top-4 md:top-6 left-4 md:left-6 z-20">
+                                                        <div className="w-10 h-10 md:w-12 md:h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                                                            <span className="text-white font-bold text-sm md:text-lg">{index + 1}</span>
                                                         </div>
                                                     </div>
-                                                )}
 
-                                                {/* Card number indicator */}
-                                                <div className="absolute top-6 left-6 z-20">
-                                                    <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
-                                                        <span className="text-white font-bold text-lg">{index + 1}</span>
+                                                    {/* Content */}
+                                                    <div className="relative z-10 h-full flex items-center p-4 md:p-8 lg:p-12">
+                                                        {card.content}
                                                     </div>
-                                                </div>
 
-                                                {/* Content */}
-                                                <div className="relative z-10 h-full flex items-center p-8 lg:p-12">
-                                                    {card.content}
+                                                    {/* Animated border */}
+                                                    <div className="absolute inset-0 border-2 border-emerald-400/30 rounded-2xl md:rounded-3xl animate-pulse"></div>
                                                 </div>
-
-                                                {/* Animated border */}
-                                                <div className="absolute inset-0 border-2 border-emerald-400/30 rounded-3xl animate-pulse"></div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
-                        {/* Side navigation dots */}
-                        <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-20">
+                        {/* Side navigation dots - Hidden on mobile */}
+                        <div className="hidden md:block absolute right-6 lg:right-8 top-1/2 transform -translate-y-1/2 z-30">
                             <div className="flex flex-col space-y-4">
-                                {cards.map((_, index) => (
-                                    <div
-                                        key={index}
-                                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 cursor-pointer ${index === currentCardIndex
-                                                ? 'bg-emerald-400 border-emerald-400 scale-125'
-                                                : index < currentCardIndex
-                                                    ? 'bg-emerald-400/50 border-emerald-400/50'
-                                                    : 'bg-transparent border-white/30 hover:border-white/50'
-                                            }`}
-                                        onClick={() => setCurrentCardIndex(index)}
-                                    />
-                                ))}
+                                {cards.map((_, index) => {
+                                    let dotState = 'inactive';
+                                    if (index === currentCardIndex) {
+                                        dotState = scrollProgress < 0.5 ? 'active' : 'transitioning';
+                                    } else if (index === currentCardIndex + 1 && scrollProgress > 0.5) {
+                                        dotState = 'active';
+                                    } else if (index < currentCardIndex || (index === currentCardIndex && scrollProgress >= 1)) {
+                                        dotState = 'completed';
+                                    }
+                                    
+                                    return (
+                                        <div
+                                            key={index}
+                                            className={`w-4 h-4 rounded-full border-2 transition-all duration-300 cursor-pointer ${
+                                                dotState === 'active'
+                                                    ? 'bg-emerald-400 border-emerald-400 scale-125'
+                                                    : dotState === 'completed'
+                                                        ? 'bg-emerald-400/50 border-emerald-400/50'
+                                                        : dotState === 'transitioning'
+                                                            ? 'bg-emerald-400/70 border-emerald-400/70 scale-110'
+                                                            : 'bg-transparent border-white/30 hover:border-white/50'
+                                                }`}
+                                            onClick={() => {
+                                                setCurrentCardIndex(index);
+                                                setScrollProgress(0);
+                                            }}
+                                        />
+                                    );
+                                })}
                             </div>
                         </div>
 
                         {/* Card title overlay */}
-                        <div className="absolute bottom-8 left-8 z-20">
-                            <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                                <div className="text-white/60 text-sm mb-1">Service {currentCardIndex + 1} of {cards.length}</div>
-                                <div className="text-white font-bold text-lg">{cards[currentCardIndex]?.title}</div>
+                        <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30">
+                            <div className="bg-black/50 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/20">
+                                <div className="text-white/60 text-xs md:text-sm mb-1">
+                                    Service {currentCardIndex + 1} of {cards.length}
+                                    {scrollProgress > 0.1 && currentCardIndex < cards.length - 1 && (
+                                        <span className="ml-2 text-emerald-400">
+                                            → {Math.round(scrollProgress * 100)}% to next
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="text-white font-bold text-sm md:text-lg">
+                                    {scrollProgress > 0.5 && currentCardIndex < cards.length - 1
+                                        ? cards[currentCardIndex + 1]?.title
+                                        : cards[currentCardIndex]?.title}
+                                </div>
                             </div>
                         </div>
 
+                        {/* Progress bar for current transition */}
+                        {scrollProgress > 0 && currentCardIndex < cards.length - 1 && (
+                            <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 z-30">
+                                <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                                    <div className="w-24 md:w-32 h-2 bg-white/20 rounded-full overflow-hidden">
+                                        <div 
+                                            className="h-full bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full transition-all duration-300"
+                                            style={{ width: `${scrollProgress * 100}%` }}
+                                        />
+                                    </div>
+                                    <div className="text-white/60 text-xs mt-2 text-center">
+                                        Transition Progress
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
                         {/* Scroll hint */}
                         {currentCardIndex < cards.length - 1 && (
-                            <div className="absolute bottom-8 right-1/2 transform translate-x-1/2 z-20">
+                            <div className="absolute bottom-4 md:bottom-8 right-1/2 transform translate-x-1/2 z-20">
                                 <div className="flex flex-col items-center text-white/60 animate-bounce">
-                                    <span className="text-sm mb-2">Keep scrolling</span>
-                                    <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                                        <div className="w-1 h-3 bg-white/50 rounded-full animate-pulse mt-2"></div>
+                                    <span className="text-xs md:text-sm mb-2">
+                                        {scrollProgress > 0.5 ? 'Continue scrolling' : 'Keep scrolling'}
+                                    </span>
+                                    <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-white/30 rounded-full flex justify-center relative overflow-hidden">
+                                        <div className="w-1 h-2 md:h-3 bg-white/50 rounded-full animate-pulse mt-1 md:mt-2"></div>
+                                        {/* Scroll progress indicator inside the scroll hint */}
+                                        <div 
+                                            className="absolute bottom-0 left-0 right-0 bg-emerald-400/30 transition-all duration-300 rounded-full"
+                                            style={{ height: `${scrollProgress * 100}%` }}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -401,21 +509,19 @@ const ScrollServices = () => {
                 </div>
             </div>
 
-
-
             {/* Custom Styles */}
             <style jsx>{`
                 .scroll-indicator {
                     position: fixed;
                     top: 50%;
-                    right: 2rem;
+                    right: 1rem;
                     transform: translateY(-50%);
                     z-index: 50;
                 }
                 
-                @media (max-width: 768px) {
+                @media (min-width: 768px) {
                     .scroll-indicator {
-                        right: 1rem;
+                        right: 2rem;
                     }
                 }
                 
@@ -426,7 +532,13 @@ const ScrollServices = () => {
                 
                 /* Custom scrollbar for webkit browsers */
                 ::-webkit-scrollbar {
-                    width: 8px;
+                    width: 6px;
+                }
+                
+                @media (min-width: 768px) {
+                    ::-webkit-scrollbar {
+                        width: 8px;
+                    }
                 }
                 
                 ::-webkit-scrollbar-track {
@@ -441,10 +553,14 @@ const ScrollServices = () => {
                 ::-webkit-scrollbar-thumb:hover {
                     background: linear-gradient(to bottom, #2563eb, #059669);
                 }
+                
+                /* Prevent horizontal scroll on mobile */
+                body {
+                    overflow-x: hidden;
+                }
             `}</style>
         </div>
     )
 }
 
 export default ScrollServices
-
