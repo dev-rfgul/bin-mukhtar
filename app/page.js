@@ -18,8 +18,6 @@ import ScrollServices from "./Components/ScrollServices";
 
 const page = () => {
   useSmoothScroll();
-
-
   return (
     <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       <Navbar />
@@ -34,16 +32,12 @@ const page = () => {
         buttonText="Contact Us  "
         imagePosition={"right"}
         imgSrc="/images/primary-pic-new (1).png"
-
       // orange pic is finalezee
       />
-
       <ScrollServices />
       <Blogs />
       {/* services component */}
       {/* <Testimonials buttonText="View all services " /> */}
-
-
       {/* <Awards
         imgHeight={"w-full"}
         heading=" Featured Blogs"
@@ -64,7 +58,6 @@ const page = () => {
         textArray={["", "", "", ""]}
         routePath={["/1stBlog", "/2ndBlog", "/3rdBlog", "/4thBlog"]}
       /> */}
-
       <Collaborator />
       <Banner
         heading="Say hello to the app that made everything even more convenient"
@@ -73,7 +66,6 @@ const page = () => {
         buttonCount={1}
         imgSrc="/images/16-1.png"
       />
-
       {/* <FeatureVideos/> */}
       <Team />
       <Awards />
