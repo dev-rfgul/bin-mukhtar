@@ -179,7 +179,9 @@ const HomePage = () => {
               </Link>
             </li>
             <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="#"></Link>
+              <Link className="block hover:text-gray-700" href="/blogs">
+                Blogs
+              </Link>
             </li>
             <li className="py-2 border-b border-gray-300">
               <Link className="block hover:text-gray-700" href="/Contact">

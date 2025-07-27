@@ -66,15 +66,11 @@ const page = () => {
         buttonCount={1}
         imgSrc="/images/16-1.png"
       />
-      {/* <FeatureVideos/> */}
       <Team />
       <Awards />
-      {/* <Contact /> */}
       <Footer />
-      {/* <BlogPost/> */}
       <FixedLogos />
       <SpeedInsights />
-      {/* <BlogPost /> */}
     </div>
   );
 };
