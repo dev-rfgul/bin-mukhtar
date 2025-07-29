@@ -6,10 +6,10 @@ const Awards = ({
     "https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    "https://plus.unsplash.com/premium_photo-1676618539992-21c7d3b6df0f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ],
   headingArray = [
-    "Won 2023 Startup of the Year",
+    "Won  Startup of the Year",
     "4.6 Star Rating Excellence",
     "Certified E-file Provider",
     "Security Excellence Award",
@@ -42,10 +42,10 @@ const Awards = ({
   }, []);
 
   const awardStats = [
-    { number: "50+", label: "Awards Won", icon: "🏆" },
-    { number: "5+", label: "Years of Excellence", icon: "⭐" },
-    { number: "98%", label: "Success Rate", icon: "📈" },
-    { number: "12K+", label: "Happy Clients", icon: "😊" }
+    { number: "50+", label: "Awards Won", },
+    { number: "5+", label: "Years of Excellence",  },
+    { number: "98%", label: "Success Rate",  },
+    { number: "12K+", label: "Happy Clients", }
   ];
 
   const testimonials = [
@@ -70,22 +70,6 @@ const Awards = ({
         <div className="absolute top-20 right-20 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-        
-        {/* Floating trophy elements */}
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-yellow-400/20 text-6xl animate-float"
-            style={{
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              animationDuration: (Math.random() * 10 + 15) + 's'
-            }}
-          >
-            🏆
-          </div>
-        ))}
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-16 py-20">
@@ -93,7 +77,6 @@ const Awards = ({
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Badge */}
           <div className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full backdrop-blur-sm mb-8">
-            <div className="text-2xl mr-3 animate-bounce">🏆</div>
             <span className=" text-blue-300 font-medium">Excellence & Recognition</span>
           </div>
 
@@ -131,21 +114,7 @@ const Awards = ({
                       src={imgSrc}
                       alt={`Award ${index + 1}: ${headingArray[index]}`}
                     />
-                    
-                    {/* Floating sparkles */}
-                    {hoveredCard === index && (
-                      <>
-                        <div className="absolute -top-2 -right-2 text-yellow-400 text-2xl animate-ping">✨</div>
-                        <div className="absolute -bottom-2 -left-2 text-yellow-400 text-xl animate-ping delay-200">⭐</div>
-                      </>
-                    )}
-                  </div>
-
-                  {/* Award rank indicator */}
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-sm font-bold w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                    #{index + 1}
-                  </div>
-
+                  </div>         
                   {/* Award year badge */}
                   <div className="absolute top-4 left-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                     2023
@@ -161,12 +130,6 @@ const Awards = ({
                     {textArray[index]}
                   </p>
                   
-                  {/* Award icon */}
-                  <div className="flex justify-center mt-4">
-                    <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center">
-                      <span className="text-2xl animate-pulse">🏆</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -185,7 +148,7 @@ const Awards = ({
               
               <div className="relative">
                 <div className="text-3xl mb-2 animate-bounce">{stat.icon}</div>
-                <div className="text-3xl lg:text-4xl font-bold text-yellow-400 mb-2">{stat.number}</div>
+                <div className="text-3xl lg:text-4xl font-bold text-gray-200 mb-2">{stat.number}</div>
                 <div className="text-gray-300 font-medium text-sm">{stat.label}</div>
               </div>
             </div>
