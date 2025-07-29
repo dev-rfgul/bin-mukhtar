@@ -33,10 +33,10 @@ const Team = () => {
   }, []);
 
   const teamStats = [
-    { number: "100+", label: "Expert Professionals", icon: "👥" },
-    { number: "15+", label: "Years Experience", icon: "📊" },
-    { number: "5000+", label: "Happy Clients", icon: "😊" },
-    { number: "24/7", label: "Support Available", icon: "🕒" }
+    { number: "100+", label: "Expert Professionals", },
+    { number: "15+", label: "Years Experience", },
+    { number: "5000+", label: "Happy Clients",  },
+    { number: "24/7", label: "Support Available", }
   ];
 
   const expertise = [
