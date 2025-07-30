@@ -7,9 +7,9 @@ import Contact from "./Contact";
 const page = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Contact/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

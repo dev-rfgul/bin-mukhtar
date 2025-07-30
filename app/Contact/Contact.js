@@ -1,4 +1,6 @@
+"use client";
 import { useState } from 'react';
+import { Sparkles, Send, Mail, Phone, User, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,12 +11,18 @@ export default function Contact() {
     message: '',
     service: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hoveredField, setHoveredField] = useState(null);
 
   const services = [
-    'Web Development',
-    'Mobile App Development',
-    'UI/UX Design',
-    'SEO Optimization',
+    'Individual NTN Registration',
+    'Business NTN Registration', 
+    'Tax Filing',
+    'Sales Tax Registration',
+    'Business Tax Filing',
+    'Financial Advisory',
+    'Audit & Assurance',
+    'Business Registration & Setup',
     'Other',
   ];
 
@@ -27,80 +35,272 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert('Form submitted!');
-    // You can later connect this with an API route or external service
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      console.log(formData);
+      alert('Form submitted successfully!');
+      setIsSubmitting(false);
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        number: '',
+        message: '',
+        service: '',
+      });
+    }, 2000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-2xl">
-        <h2 className="text-2xl font-bold text-blue-500 mb-6">Contact Us</h2>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            className="p-3 border rounded-md"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            className="p-3 border rounded-md"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="p-3 border rounded-md col-span-1 md:col-span-2"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="tel"
-            name="number"
-            placeholder="Phone Number"
-            className="p-3 border rounded-md col-span-1 md:col-span-2"
-            value={formData.number}
-            onChange={handleChange}
-            required
-          />
-          <select
-            name="service"
-            className="p-3 border rounded-md col-span-1 md:col-span-2"
-            value={formData.service}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>Select a service</option>
-            {services.map((service, idx) => (
-              <option key={idx} value={service}>{service}</option>
-            ))}
-          </select>
-          <textarea
-            name="message"
-            rows="4"
-            placeholder="Your Message"
-            className="p-3 border rounded-md col-span-1 md:col-span-2"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white py-3 rounded-md col-span-1 md:col-span-2 hover:bg-blue-600 transition"
-          >
-            Submit
-          </button>
-        </form>
+    <div className="relative min-h-screen py-16 px-4">
+      {/* Background Pattern - Similar to Testimonials */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
+                           radial-gradient(circle at 75% 75%, #8b5cf6 2px, transparent 2px)`,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header Section - Similar to Testimonials */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
+            <Sparkles className="w-4 h-4" />
+            Get In Touch
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold text-white bg-clip-text text-transparent mb-6">
+            Contact Us
+          </h1>
+          <p className="text-xl text-gray-100 max-w-2xl mx-auto">
+            Ready to streamline your business operations? Let's discuss your needs and find the perfect solution.
+          </p>
+        </div>
+
+        {/* Contact Form Container */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-white/95 to-gray-50/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50">
+            {/* Background Decoration */}
+            <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
+              <div className="text-8xl">📧</div>
+            </div>
+
+            <div className="relative z-10">
+              {/* Form Header */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-white text-3xl mb-6 shadow-lg">
+                  <Mail className="w-10 h-10" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  Let's Start Your Journey
+                </h2>
+                <p className="text-lg text-gray-700 mb-8">
+                  Fill out the form below and we'll get back to you within 24 hours
+                </p>
+              </div>
+
+              {/* Contact Form */}
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Fields Row */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="relative">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                      <input
+                        type="text"
+                        name="firstName"
+                        placeholder="Enter your first name"
+                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        onFocus={() => setHoveredField('firstName')}
+                        onBlur={() => setHoveredField(null)}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Last Name *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                      <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Enter your last name"
+                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        onFocus={() => setHoveredField('lastName')}
+                        onBlur={() => setHoveredField(null)}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Field */}
+                <div className="relative">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email address"
+                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                      value={formData.email}
+                      onChange={handleChange}
+                      onFocus={() => setHoveredField('email')}
+                      onBlur={() => setHoveredField(null)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Phone Field */}
+                <div className="relative">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Phone Number *
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      type="tel"
+                      name="number"
+                      placeholder="Enter your phone number"
+                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                      value={formData.number}
+                      onChange={handleChange}
+                      onFocus={() => setHoveredField('number')}
+                      onBlur={() => setHoveredField(null)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Service Selection */}
+                <div className="relative">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Service Needed *
+                  </label>
+                  <select
+                    name="service"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg appearance-none cursor-pointer"
+                    value={formData.service}
+                    onChange={handleChange}
+                    onFocus={() => setHoveredField('service')}
+                    onBlur={() => setHoveredField(null)}
+                    required
+                  >
+                    <option value="" disabled>Select a service</option>
+                    {services.map((service, idx) => (
+                      <option key={idx} value={service} className="py-2">
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Message Field */}
+                <div className="relative">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Message *
+                  </label>
+                  <div className="relative">
+                    <MessageCircle className="absolute left-3 top-4 text-gray-400 w-5 h-5" />
+                    <textarea
+                      name="message"
+                      rows="5"
+                      placeholder="Tell us about your project or requirements..."
+                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg resize-vertical"
+                      value={formData.message}
+                      onChange={handleChange}
+                      onFocus={() => setHoveredField('message')}
+                      onBlur={() => setHoveredField(null)}
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="text-center pt-6">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-12 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 inline-flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    <span className="relative z-10">
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </span>
+                    <Send className={`w-5 h-5 transition-transform duration-300 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
+                    <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                  </button>
+                </div>
+
+                {/* Alternative Contact Methods */}
+                <div className="border-t border-gray-200 pt-8 mt-8">
+                  <p className="text-center text-gray-600 mb-6">
+                    Or contact us directly:
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a
+                      href="https://wa.me/923180481998?text=Hello, I'd like to discuss your services"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3 shadow-lg"
+                    >
+                      <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                      <span>WhatsApp Us</span>
+                    </a>
+                    <a
+                      href="mailto:info@binmukhtar.com"
+                      className="group bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3 shadow-lg"
+                    >
+                      <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                      <span>Email Us</span>
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Info Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-6xl mx-auto">
+          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Phone className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Quick Response</h3>
+            <p className="text-gray-300">We respond to all inquiries within 24 hours</p>
+          </div>
+          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <MessageCircle className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Free Consultation</h3>
+            <p className="text-gray-300">Initial consultation is completely free</p>
+          </div>
+          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Expert Guidance</h3>
+            <p className="text-gray-300">Professional advice from certified experts</p>
+          </div>
+        </div>
       </div>
     </div>
   );

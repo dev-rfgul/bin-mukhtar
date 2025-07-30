@@ -43,8 +43,8 @@ const page = () => {
       />
       <Team />
       <Awards />
-      <Footer />
       <Contact/>
+      <Footer />
       <FixedLogos />
       <SpeedInsights />
     </div>
