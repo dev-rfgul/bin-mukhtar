@@ -176,19 +176,6 @@ const Footer = () => {
                 </li>
               </p>
             </div>
-            <div className="col-span-4">
-              <div className="flex flex-col md:flex-row justify-center mt-8">
-                <a
-                  href="https://devrfgul.netlify.com/"
-                  target="_blank"
-                  class="inline-block"
-                >
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Contact Developer
-                  </button>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
