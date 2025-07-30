@@ -264,7 +264,7 @@ export default function Contact() {
                       <span>WhatsApp Us</span>
                     </a>
                     <a
-                      href="mailto:info@binmukhtar.com"
+                      href="mailto:binmukhtar@gmail.com"
                       className="group bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3 shadow-lg"
                     >
                       <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
