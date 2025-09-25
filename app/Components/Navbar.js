@@ -1,120 +1,28 @@
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useState } from "react";
-
-// function NavBar() {
-//   const [navbar, setNavbar] = useState(false);
-//   return (
-//     <div>
-//       <nav className="w-full bg-primary fixed top-0 left-0 right-0 z-10">
-//         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
-//           <div>
-//             <div className=" flex items-center justify-between py- md:py-5 md:block">
-//               {/* LOGO */}
-//               <Link href="/">
-//                 <img className="w-1/2" src="./images/logo-n4 (1).png"></img>
-//                 {/* 4th logo is finalized */}
-//               </Link>
-//               {/* HAMBURGER BUTTON FOR MOBILE */}
-//               <div className="md:hidden">
-//                 <img
-//                   src=""
-//                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-//                   onClick={() => setNavbar(!navbar)}
-//                 ></img>
-//                 <button
-//                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-//                   onClick={() => setNavbar(!navbar)}
-//                 >
-//                   {navbar ? (
-//                     <Image
-//                       src="/images/icon-nav-2.png"
-//                       width={30}
-//                       height={30}
-//                       alt="logo"
-//                     />
-//                   ) : (
-//                     <Image
-//                       src="/images/icon-nav.png"
-//                       width={30}
-//                       height={30}
-//                       alt="logo"
-//                       className="focus:border-none active:border-none"
-//                     />
-//                   )}
-//                 </button>
-//               </div>
-//             </div>
-//           </div>
-//           <div>
-//             <div
-//               className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-//                 navbar ? "p-12 md:p-0 block" : "hidden"
-//               }`}
-//             >
-//               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-//                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-//                   <Link href="./tools" onClick={() => setNavbar(!navbar)}>
-//                     Tools
-//                   </Link>
-//                 </li>
-
-//                 <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-//                   <Link
-//                     href="/Services"
-//                     as="/Services"
-//                     onClick={() => setNavbar(!navbar)}
-//                   >
-//                     Services
-//                   </Link>
-//                 </li>
-
-//                 <li className="pb-6 text-xl text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
-//                   <Link
-//                     href="/blogs"
-//                     as="/blogs"
-//                     onClick={() => setNavbar(!navbar)}
-//                   >
-//                     Blogs
-//                   </Link>
-//                 </li>
-//                 <li className="pb-6 text-xl text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
-//                   <Link
-//                     href="/Contact"
-//                     as="/Contact"
-//                     onClick={() => setNavbar(!navbar)}
-//                   >
-//                     Contact
-//                   </Link>
-//                 </li>
-//               </ul>
-//             </div>
-//           </div>
-//         </div>
-//       </nav>
-//     </div>
-//   );
-// }
-
-// export default NavBar;
-
-
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const HomePage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div>
-      <div className="flex justify-between pl-11 pr-11 h-16 text-center bg-primary text-white">
+  <div className={`flex justify-between pl-6 pr-6 h-16 items-center text-center fixed top-0 left-0 right-0 z-30 backdrop-blur-sm transition-all duration-300 ${scrolled ? 'bg-black/50 border-b border-white/10' : 'bg-transparent border-b border-transparent'} text-white`}>
         <div className="flex items-center">
           <img
             className="w-2/3 sm:w-1/2 md:w-1/3"
@@ -122,69 +30,68 @@ const HomePage = () => {
             alt="logo"
           />
         </div>
-
-        <div className="hidden md:flex m-4">
-          <ul className="flex space-x-11">
+        <div className="hidden md:flex m-0">
+          <ul className="flex space-x-8 items-center">
             <li className="text-md">
-              <Link className="hover:text-gray-700" href="/">
+              <Link className="text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors duration-200 rounded-md px-1" href="/">
                 Home
               </Link>
             </li>
             <li className="text-md">
-              <Link className="hover:text-gray-700" href="/blogs">
+              <Link className="text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors duration-200 rounded-md px-1" href="/blogs">
                 Blogs
               </Link>
             </li>
             <li className="text-md">
-              <Link className="hover:text-gray-700" href="/Services">
+              <Link className="text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors duration-200 rounded-md px-1" href="/Services">
                 Services
               </Link>
             </li>
             <li className="text-md">
-              <Link className="hover:text-gray-700" href="/tools">
+              <Link className="text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors duration-200 rounded-md px-1" href="/tools">
                 Tools
               </Link>
             </li>
             <li className="text-md">
-              <Link className="hover:text-gray-700" href="/Contact">
+              <Link className="text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors duration-200 rounded-md px-1" href="/Contact">
                 Contact Us
               </Link>
             </li>
           </ul>
         </div>
 
-        <div className="md:hidden m-4 flex items-center">
-          <button onClick={toggleMenu} className="text-xl">
+        <div className="md:hidden m-2 flex items-center">
+          <button onClick={toggleMenu} className="text-2xl text-white p-2 rounded-md hover:bg-white/10 transition-colors">
             &#9776;
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white text-black px-11 py-4">
-          <ul>
-            <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="/">
+        <div className="md:hidden fixed inset-x-4 top-20 bg-gradient-to-br from-gray-900/95 via-black/90 to-purple-900/95 text-white px-6 py-6 rounded-2xl shadow-2xl backdrop-blur-md z-40">
+          <ul className="space-y-4">
+            <li>
+              <Link className="block text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 px-2 py-2 rounded-md transition-colors" href="/">
                 Home
               </Link>
             </li>
-            <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="/Tools">
+            <li>
+              <Link className="block text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 px-2 py-2 rounded-md transition-colors" href="/Tools">
                 Tools
               </Link>
             </li>
-            <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="/Services">
+            <li>
+              <Link className="block text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 px-2 py-2 rounded-md transition-colors" href="/Services">
                 Services
               </Link>
             </li>
-            <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="/blogs">
+            <li>
+              <Link className="block text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 px-2 py-2 rounded-md transition-colors" href="/blogs">
                 Blogs
               </Link>
             </li>
-            <li className="py-2 border-b border-gray-300">
-              <Link className="block hover:text-gray-700" href="/Contact">
+            <li>
+              <Link className="block text-white hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 px-2 py-2 rounded-md transition-colors" href="/Contact">
                 Contact Us
               </Link>
             </li>
