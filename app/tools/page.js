@@ -10,12 +10,13 @@ import FixedLogos from '../Components/FixedLogo';
 
 const page = () => {
   return (
-    <div>
-      <Navbar />{" "}
-     
-      <Calculator/>
-      <Footer/>
-      <FixedLogos/>
+    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 min-h-screen">
+      <Navbar />
+      <main>
+        <Calculator />
+      </main>
+      <Footer />
+      <FixedLogos />
     </div>
   );
 };

@@ -60,83 +60,83 @@ function Calculator() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-3xl font-semibold mt-6 sm:mt-10 md:mt-14 mb-4">Tax Calculator</h1>
+    <div className="pt-24 md:pt-28 lg:pt-32  min-h-screen text-white">
+      <div className="container mx-auto px-4 py-10">
+        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur rounded-xl p-6 shadow-lg">
+          <h1 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">Tax Calculator</h1>
 
+          <div className="mb-4 flex gap-3">
+            <button
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-emerald-400 to-indigo-500 text-black font-semibold shadow-md"
+              onClick={calculateSalariedTax}
+            >
+              Salaried Person
+            </button>
+          </div>
 
-        <div className="mb-4">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 active:bg-slate-800 text-white font-bold py-2 px-4 rounded"
-            onClick={calculateSalariedTax}
-          >
-            Salaried Person
-          </button>
-          {/* 
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Business Person
-          </button> */}
+          <div className="w-full">
+            <label className="block text-gray-200 text-sm font-medium mb-2" htmlFor="monthlySalary">
+              Enter Monthly Salary
+            </label>
+            <input
+              id="monthlySalary"
+              className="w-full rounded-md border border-white/10 bg-white/3 py-2 px-3 text-white placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+              type="text"
+              value={monthlySalary}
+              onChange={handleMonthlySalaryChange}
+              placeholder="e.g. 75000"
+            />
+          </div>
+
+          <div className="mt-4 flex justify-end">
+            <button
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold"
+              onClick={() => {
+                autoScroll();
+                calculateSalariedTax();
+              }}
+            >
+              Calculate
+            </button>
+          </div>
+
+          <ToastContainer />
         </div>
-        <div className="w-full max-w-md px-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="monthlySalary"
-          >
-            Enter Monthly Salary:
-          </label>
-          <input
-            id="monthlySalary"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            value={monthlySalary}
-            onChange={handleMonthlySalaryChange}
-            placeholder="Enter monthly salary"
-          />
-        </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 focus:outline-none focus:shadow-outline"
-          onClick={() => {
-            autoScroll();
-            calculateSalariedTax();
-          }}
-        >
-          Calculate
-        </button>
-        <ToastContainer />
-      </div>
 
-      <div className="neumorphism mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Monthly Details</h2>
-          <div className="flex flex-col">
-            <div className="flex justify-between mb-2">
-              <span className="font-semibold">Monthly Salary:</span>
-              <span>{monthlySalary}</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span className="font-semibold">Monthly Tax:</span>
-              <span>{monthlyTax}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-semibold">Salary After Tax:</span>
-              <span>{(monthlySalary - monthlyTax).toFixed(2)}</span>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white/5 backdrop-blur rounded-xl p-4">
+            <h2 className="text-lg font-semibold text-white mb-3">Monthly Details</h2>
+            <div className="space-y-2 text-gray-200">
+              <div className="flex justify-between">
+                <span className="font-medium">Monthly Salary:</span>
+                <span>{monthlySalary}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-medium">Monthly Tax:</span>
+                <span>{monthlyTax}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-medium">Salary After Tax:</span>
+                <span>{monthlySalary ? (monthlySalary - monthlyTax).toFixed(2) : ""}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Annual Details</h2>
-          <div className="flex flex-col">
-            <div className="flex justify-between mb-2">
-              <span className="font-semibold">Annual Salary:</span>
-              <span>{annualSalary}</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span className="font-semibold">Annual Tax:</span>
-              <span>{annualTax}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-semibold">Salary After Tax:</span>
-              <span>{(annualSalary - annualTax).toFixed(2)}</span>
+
+          <div className="bg-white/5 backdrop-blur rounded-xl p-4">
+            <h2 className="text-lg font-semibold text-white mb-3">Annual Details</h2>
+            <div className="space-y-2 text-gray-200">
+              <div className="flex justify-between">
+                <span className="font-medium">Annual Salary:</span>
+                <span>{annualSalary}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-medium">Annual Tax:</span>
+                <span>{annualTax}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-medium">Salary After Tax:</span>
+                <span>{annualSalary ? (annualSalary - annualTax).toFixed(2) : ""}</span>
+              </div>
             </div>
           </div>
         </div>
