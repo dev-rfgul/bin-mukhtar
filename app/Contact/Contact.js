@@ -60,7 +60,7 @@ export default function Contact() {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
-                           radial-gradient(circle at 75% 75%, #8b5cf6 2px, transparent 2px)`,
+                          radial-gradient(circle at 75% 75%, #8b5cf6 2px, transparent 2px)`,
           backgroundSize: '50px 50px'
         }}></div>
       </div>
@@ -117,7 +117,7 @@ export default function Contact() {
                         type="text"
                         name="firstName"
                         placeholder="Enter your first name"
-                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
+                        className="w-full text-black pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4  placeholder:text-gray-300"
                         value={formData.firstName}
                         onChange={handleChange}
                         onFocus={() => setHoveredField('firstName')}
@@ -137,7 +137,7 @@ export default function Contact() {
                         type="text"
                         name="lastName"
                         placeholder="Enter your last name"
-                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
+                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300"
                         value={formData.lastName}
                         onChange={handleChange}
                         onFocus={() => setHoveredField('lastName')}
@@ -159,7 +159,7 @@ export default function Contact() {
                       type="email"
                       name="email"
                       placeholder="Enter your email address"
-                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300"
                       value={formData.email}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('email')}
@@ -180,7 +180,7 @@ export default function Contact() {
                       type="tel"
                       name="number"
                       placeholder="Enter your phone number"
-                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300"
                       value={formData.number}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('number')}
@@ -197,7 +197,7 @@ export default function Contact() {
                   </label>
                   <select
                     name="service"
-                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white appearance-none cursor-pointer"
+                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black appearance-none cursor-pointer"
                     value={formData.service}
                     onChange={handleChange}
                     onFocus={() => setHoveredField('service')}
@@ -224,7 +224,7 @@ export default function Contact() {
                       name="message"
                       rows="5"
                       placeholder="Tell us about your project or requirements..."
-                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300 resize-vertical"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300 resize-vertical"
                       value={formData.message}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('message')}
