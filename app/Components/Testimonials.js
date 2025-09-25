@@ -103,7 +103,7 @@ const Testimonials = ({ buttonText = "View All Services" }) => {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
-                           radial-gradient(circle at 75% 75%, #8b5cf6 2px, transparent 2px)`,
+                          radial-gradient(circle at 75% 75%, #8b5cf6 2px, transparent 2px)`,
           backgroundSize: '50px 50px'
         }}></div>
       </div>
@@ -111,7 +111,7 @@ const Testimonials = ({ buttonText = "View All Services" }) => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
             <Sparkles className="w-4 h-4" />
             Premium Services
           </div>
