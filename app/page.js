@@ -18,7 +18,17 @@ import Contact from "./Contact/Contact";
 const page = () => {
   useSmoothScroll();
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+    <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      {/* dotted background overlay (pointer-events-none so it doesn't block clicks) */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-10 z-0"
+        style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px), radial-gradient(circle at 75% 75%, #8b5cf6 2px, transparent 2px)`,
+          backgroundSize: '50px 50px',
+        }}
+      />
+
+      <div className="relative z-10">
       <Navbar />
       <Banner
         heading={"Welcome to Bin Mukhtar and Co"}
@@ -46,6 +56,7 @@ const page = () => {
       <Footer />
       <FixedLogos />
       <SpeedInsights />
+      </div>
     </div>
   );
 };
