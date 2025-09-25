@@ -606,101 +606,96 @@ const ServiceCard = () => {
       : services.filter((service) => service.category === filter);
 
   return (
-    <div className="bg-white shadow-md rounded-md p-4 mb-4">
-      <div className="section">
-        <div className="container mx-auto colSpecial">
-          <div className="lg:flex lg:justify-between lg:items-center">
-            <div className="lg:w-1/2 lg:pr-4">
-              <h1 className="text-3xl lg:text-5xl font-bold text-primary mb-4 lg:mb-6">
-                Our Business Services
-              </h1>
-              <p className="mb-4 lg:mb-6">
-                Registering a business can be quite stressful. Worry not! Get
-                expert assistance on how and which business structure to select
-                and start your entrepreneurial journey with a bang!
-              </p>
-            </div>
-            <div className="lg:w-1/2 lg:pl-4">
-              <div className="flex flex-wrap justify-center lg:justify-end">
+    <div className="pt-24 md:pt-28 lg:pt-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white pb-12">
+      <div className="container mx-auto px-4">
+        <div className="lg:flex lg:justify-between lg:items-center mb-6">
+          <div className="lg:w-1/2 lg:pr-6">
+            <h1 className="text-3xl lg:text-5xl font-extrabold mb-3 text-white">
+              Our Business Services
+            </h1>
+            <p className="text-gray-300 max-w-xl">
+              Registering a business can be stressful. Get expert assistance on
+              which structure to select and start your entrepreneurial journey
+              with confidence.
+            </p>
+          </div>
+            <div className="lg:w-1/2 lg:pl-6 mt-6 lg:mt-0">
+            <div className="flex flex-wrap justify-center lg:justify-end gap-2">
                 {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setFilter(category)}
-                    className={`bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded inline-flex items-center mb-2 lg:mb-0 mr-2 ${
-                      filter === category ? "bg-gray-400" : ""
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
+                <button
+                  key={category}
+                  onClick={() => setFilter(category)}
+                  className={`px-4 py-2 rounded-full font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-300 transition-all text-sm ${
+                    filter === category
+                      ? "bg-gradient-to-r from-emerald-400 to-indigo-500 text-black shadow-lg"
+                      : "bg-white/6 hover:bg-white/12 text-gray-200"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
           </div>
         </div>
-      </div>
 
-      {filteredServices.map((service, index) => (
-        <div key={index} className="neumorphism mt-4 mb-4">
-          <div className="col">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-lg font-bold text-primary ">
-                {service.title}
-              </h2>
-              <span className="text-green-500 font-semibold">
-                {service.price}
-              </span>
-            </div>
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-600">Timeline</span>
-              <ul>
-                {service.time.split(",").map((req, idx) => (
-                  <li key={idx} className="text-gray-700">
-                    {req.trim()}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mb-2">
-              <span className="text-black">Requirements:</span>
-              <ul>
-                {service.requirements.split(",").map((req, idx) => (
-                  <li key={idx} className="text-gray-700">
-                    {req.trim()}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex justify-end items-center">
-              <button className="mr-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredServices.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white/4 backdrop-blur rounded-xl p-5 shadow-lg border border-white/6 flex flex-col justify-between hover:scale-[1.01] transition-transform"
+            >
+              <div>
+                <div className="flex justify-between items-start">
+                  <h2 className="text-lg font-bold text-white">{service.title}</h2>
+                  <span className="text-emerald-300 font-semibold">
+                    {service.price}
+                  </span>
+                </div>
+
+                <div className="mt-3 text-sm text-gray-200">
+                  <div className="font-medium text-gray-200">Timeline</div>
+                  <ul className="list-disc list-inside mt-1">
+                    {service.time
+                      .split(",")
+                      .map((req, idx) => (
+                        <li key={idx}>{req.trim()}</li>
+                      ))}
+                  </ul>
+                </div>
+
+                <div className="mt-3 text-sm text-gray-300">
+                  <div className="font-medium text-gray-200">Requirements</div>
+                  <ul className="list-disc list-inside mt-1">
+                    {service.requirements
+                      .split(",")
+                      .map((req, idx) => (
+                        <li key={idx}>{req.trim()}</li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+
+        <div className="mt-4 flex items-center justify-end gap-3">
                 <a
                   href="https://wa.me/923180481998?text=Hello , I am "
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-emerald-400 hover:from-emerald-400 hover:to-indigo-500 transition-shadow shadow-md"
                 >
-                  <img
-                    src="./images/whatsapp.png"
-                    alt="WhatsApp Logo"
-                    className="w-12 h-12"
-                  />
+                  <img src="/images/whatsapp.png" alt="whatsapp" className="w-6 h-6" />
                 </a>
-              </button>
-              <button>
+
                 <a
                   href="tel:+92-318-0481998"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-indigo-600 hover:bg-indigo-500 transition-shadow shadow-md"
                 >
-                  <img
-                    src="./images/phone-call.png"
-                    alt="phone call Logo"
-                    className="w-10 h-10"
-                  />
+                  <img src="/images/phone-call.png" alt="call" className="w-5 h-5" />
                 </a>
-              </button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
