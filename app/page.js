@@ -13,8 +13,7 @@ import FixedLogos from "./Components/FixedLogo";
 import Footer from "./Components/Footer";
 import Blogs from "./Components/Blogs";
 import ScrollServices from "./Components/ScrollServices";
-import Contact from "./Contact/page.js";
-// import { Contact } from "lucide-react";
+import Contact from "./Contact/Contact";
 
 const page = () => {
   useSmoothScroll();
