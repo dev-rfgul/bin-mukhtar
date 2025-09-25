@@ -6,10 +6,10 @@ import Contact from "./Contact";
 
 const page = () => {
   return (
-    <div>
-      {/* <Navbar /> */}
-      <Contact/>
-      {/* <Footer /> */}
+    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 min-h-screen">
+      <Navbar />
+      <Contact />
+      <Footer />
     </div>
   );
 };

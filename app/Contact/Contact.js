@@ -55,7 +55,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative min-h-screen py-16 px-4">
+    <div className="relative pt-24 md:pt-28 lg:pt-32 pb-12 px-4">
       {/* Background Pattern - Similar to Testimonials */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -67,43 +67,44 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section - Similar to Testimonials */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-400 to-indigo-500 text-black px-6 py-3 rounded-full text-sm font-semibold mb-4 shadow-lg">
             <Sparkles className="w-4 h-4" />
             Get In Touch
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-100 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Ready to streamline your business operations? Let's discuss your needs and find the perfect solution.
           </p>
         </div>
 
         {/* Contact Form Container */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-white/95 to-gray-50/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50">
-            {/* Background Decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
-              <div className="text-8xl">📧</div>
-            </div>
-
-            <div className="relative z-10">
-              {/* Form Header */}
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-white text-3xl mb-6 shadow-lg">
-                  <Mail className="w-10 h-10" />
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Let's Start Your Journey
-                </h2>
-                <p className="text-lg text-gray-700 mb-8">
-                  Fill out the form below and we'll get back to you within 24 hours
-                </p>
+          <div className="relative">
+            <div className="bg-white/6 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10 text-white">
+              {/* Background Decoration */}
+              <div className="absolute top-0 right-0 w-32 h-32 opacity-6 pointer-events-none">
+                <div className="text-8xl">📧</div>
               </div>
 
-              {/* Contact Form */}
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="relative z-10">
+                {/* Form Header */}
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-emerald-400 to-indigo-500 rounded-2xl text-white text-3xl mb-6 shadow-lg">
+                    <Mail className="w-10 h-10" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                    Let's Start Your Journey
+                  </h2>
+                  <p className="text-base text-gray-300 mb-6">
+                    Fill out the form below and we'll get back to you within 24 hours
+                  </p>
+                </div>
+
+                {/* Contact Form */}
+                <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Fields Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="relative">
@@ -116,7 +117,7 @@ export default function Contact() {
                         type="text"
                         name="firstName"
                         placeholder="Enter your first name"
-                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
                         value={formData.firstName}
                         onChange={handleChange}
                         onFocus={() => setHoveredField('firstName')}
@@ -136,7 +137,7 @@ export default function Contact() {
                         type="text"
                         name="lastName"
                         placeholder="Enter your last name"
-                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
                         value={formData.lastName}
                         onChange={handleChange}
                         onFocus={() => setHoveredField('lastName')}
@@ -158,7 +159,7 @@ export default function Contact() {
                       type="email"
                       name="email"
                       placeholder="Enter your email address"
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
                       value={formData.email}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('email')}
@@ -179,7 +180,7 @@ export default function Contact() {
                       type="tel"
                       name="number"
                       placeholder="Enter your phone number"
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300"
                       value={formData.number}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('number')}
@@ -196,7 +197,7 @@ export default function Contact() {
                   </label>
                   <select
                     name="service"
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg appearance-none cursor-pointer"
+                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white appearance-none cursor-pointer"
                     value={formData.service}
                     onChange={handleChange}
                     onFocus={() => setHoveredField('service')}
@@ -223,7 +224,7 @@ export default function Contact() {
                       name="message"
                       rows="5"
                       placeholder="Tell us about your project or requirements..."
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:shadow-lg resize-vertical"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-white placeholder:text-gray-300 resize-vertical"
                       value={formData.message}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('message')}
@@ -234,19 +235,19 @@ export default function Contact() {
                 </div>
 
                 {/* Submit Button */}
-                <div className="text-center pt-6">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-12 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 inline-flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    <span className="relative z-10">
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </span>
-                    <Send className={`w-5 h-5 transition-transform duration-300 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
-                    <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                  </button>
-                </div>
+                  <div className="text-center pt-6">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group relative overflow-hidden bg-gradient-to-r from-emerald-400 to-indigo-500 hover:from-emerald-500 hover:to-indigo-600 text-black font-bold py-4 px-12 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl inline-flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      <span className="relative z-10">
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                      </span>
+                      <Send className={`w-5 h-5 transition-transform duration-300 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
+                      <div className="absolute inset-0 bg-white/6 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    </button>
+                  </div>
 
                 {/* Alternative Contact Methods */}
                 <div className="border-t border-gray-200 pt-8 mt-8">
@@ -258,7 +259,7 @@ export default function Contact() {
                       href="https://wa.me/923180481998?text=Hello, I'd like to discuss your services"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3 shadow-lg"
+                      className="group bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 text-black font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3 shadow-lg"
                     >
                       <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                       <span>WhatsApp Us</span>
@@ -272,29 +273,30 @@ export default function Contact() {
                     </a>
                   </div>
                 </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Additional Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-6xl mx-auto">
-          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
+          <div className="text-center p-6 bg-white/6 backdrop-blur-sm rounded-2xl border border-white/10">
+            <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <Phone className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Quick Response</h3>
             <p className="text-gray-300">We respond to all inquiries within 24 hours</p>
           </div>
-          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="text-center p-6 bg-white/6 backdrop-blur-sm rounded-2xl border border-white/10">
+            <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <MessageCircle className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Free Consultation</h3>
             <p className="text-gray-300">Initial consultation is completely free</p>
           </div>
-          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="text-center p-6 bg-white/6 backdrop-blur-sm rounded-2xl border border-white/10">
+            <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Expert Guidance</h3>
