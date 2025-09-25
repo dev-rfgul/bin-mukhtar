@@ -7,7 +7,7 @@ import Footer from '../Components/Footer';
 
 const page = () => {
   return (
-    <div>
+    <div className='bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800'>
       <NavBar/>
       <Services/>
       <Footer/>

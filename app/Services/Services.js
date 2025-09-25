@@ -606,7 +606,7 @@ const ServiceCard = () => {
       : services.filter((service) => service.category === filter);
 
   return (
-    <div className="pt-24 md:pt-28 lg:pt-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white pb-12">
+    <div className="pt-24 md:pt-28 lg:pt-32  text-white pb-12">
       <div className="container mx-auto px-4">
         <div className="lg:flex lg:justify-between lg:items-center mb-6">
           <div className="lg:w-1/2 lg:pr-6">
