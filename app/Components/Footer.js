@@ -113,15 +113,6 @@ const Footer = () => {
                     Capital Plaza, street #7 , Soan Gardens, Block D, Islamabad,
                     Punjab
                   </i>{" "}
-                  <br></br> <br></br>
-                  <i className="bi bi-geo-alt-fill">
-                    Commercial Plaza bwp
-                  </i>{" "}
-                  <br></br> <br></br>
-                  <i className="bi bi-geo-alt-fill">
-                    Bin Mukhtar and Co , Near Shalimar Metro Station, Hans Road
-                    , Hans Street Multan
-                  </i>{" "}
                   <br></br>
                 </a>
               </li>
