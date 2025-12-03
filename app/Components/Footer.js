@@ -1,12 +1,11 @@
 import React from "react";
-import Iframe from "react-iframe";
 
 import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="  text-white">
-      <div className="container  mx-auto py-12 flex justify-center items-center text-center">
+    <div className="text-white">
+      <div className="container mx-auto py-8 flex justify-center items-center text-center">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* logo here */}
           <div className="col-span-1">
@@ -140,43 +139,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          {/* google map here */}
-          <div className="col-span-4">
-            <div className="map mt-4 aspect-w-16 aspect-h-9">
-              <Iframe
-                className="rounded-3"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10823.120414694546!2d71.65043933161311!3d29.540050045567973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922f8b2bc8ea9a7%3A0x92059e7da2d949e0!2sLodhran%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1668694705539!5m2!1sen!2sus"
-                allowFullScreen=""
-                loading="lazy"
-              ></Iframe>
-            </div>
-          </div>
-          {/* all rights reserved  */}
-          <div className="col-span-4">
-            <div className="flex flex-col md:flex-row justify-center mt-8">
-              <p className="text-center md:text-left ">
-                &copy; 2024. All rights reserved
-                <li className="">
-                  <Link
-                    href="/Privacy"
-                    as="/Privacy"
-                    onClick={() => setNavbar(!navbar)}
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li className="">
-                  <Link
-                    href="/Terms"
-                    as="/Terms"
-                    onClick={() => setNavbar(!navbar)}
-                  >
-                    Terms And Conditions
-                  </Link>
-                </li>
-              </p>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
