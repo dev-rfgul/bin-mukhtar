@@ -452,7 +452,7 @@ const ServiceCard = () => {
                 {/* Action Buttons */}
                 <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
                   <a
-                    href="https://wa.me/923180481998?text=Hello, I am interested in your services"
+                    href={`https://wa.me/923180481998?text=Hello, I am interested in "${service.title}"`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-500 hover:bg-emerald-600 transition-colors shadow-sm"
