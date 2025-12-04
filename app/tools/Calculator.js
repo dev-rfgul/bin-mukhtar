@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Calculator() {
-  const notify = () => toast("Your tax has been calculated!");
+  const notify = () => toast.success("Tax calculation completed successfully!");
 
   const [monthlySalary, setMonthlySalary] = useState("");
   const [annualSalary, setAnnualSalary] = useState("");
@@ -14,12 +14,23 @@ function Calculator() {
   const autoScroll = () => {
     window.scrollTo({
       top: 500,
-      behavior: "smooth", // Optional: makes the scroll smooth
+      behavior: "smooth",
+    });
+  };
+
+  // Format number with commas for thousands
+  const formatNumber = (num) => {
+    if (!num) return "";
+    return parseFloat(num).toLocaleString('en-US', { 
+      minimumFractionDigits: 2, 
+      maximumFractionDigits: 2 
     });
   };
 
   const handleMonthlySalaryChange = (e) => {
-    setMonthlySalary(e.target.value);
+    // Allow only numbers and decimal point
+    const value = e.target.value.replace(/[^\d.]/g, '');
+    setMonthlySalary(value);
   };
 
   const calculateSalariedTax = () => {
@@ -60,86 +71,108 @@ function Calculator() {
   };
 
   return (
-    <div className="pt-24 md:pt-28 lg:pt-32  min-h-screen text-white">
+    <div className="pt-24 md:pt-28 lg:pt-32 min-h-screen text-white">
       <div className="container mx-auto px-4 py-10">
-        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur rounded-xl p-6 shadow-lg">
-          <h1 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">Tax Calculator</h1>
+        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur rounded-xl p-6 md:p-8 shadow-lg">
+          <h1 className="text-2xl md:text-3xl font-extrabold mb-2 text-white">Income Tax Calculator</h1>
+          <p className="text-gray-300 text-sm mb-6">Calculate your income tax for salaried individuals in Pakistan</p>
 
-          <div className="mb-4 flex gap-3">
-            <button
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-emerald-400 to-indigo-500 text-black font-semibold shadow-md"
-              onClick={calculateSalariedTax}
-            >
-              Salaried Person
-            </button>
-          </div>
-
-          <div className="w-full">
-            <label className="block text-black-200 text-sm font-medium mb-2" htmlFor="monthlySalary">
-              Enter Monthly Salary
+          <div className="w-full mb-6">
+            <label className="block text-gray-100 text-sm font-medium mb-2" htmlFor="monthlySalary">
+              Monthly Gross Salary (PKR)
             </label>
-            <input
-              id="monthlySalary"
-              className="w-full rounded-md border border-white/10 bg-white/3 py-2 px-3 text-black placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-300"
-              type="text"
-              value={monthlySalary}
-              onChange={handleMonthlySalaryChange}
-              placeholder="e.g. 75000"
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">Rs.</span>
+              <input
+                id="monthlySalary"
+                className="w-full rounded-lg border border-white/20 bg-white/10 py-3 pl-12 pr-4 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+                type="text"
+                value={monthlySalary}
+                onChange={handleMonthlySalaryChange}
+                placeholder="75,000"
+              />
+            </div>
+            <p className="text-xs text-gray-400 mt-1">Enter your monthly salary to calculate tax liability</p>
           </div>
 
-          <div className="mt-4 flex justify-end">
+          <div className="flex justify-center">
             <button
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold"
+              className="w-full md:w-auto px-8 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-lg transition-all duration-200 hover:shadow-xl"
               onClick={() => {
                 autoScroll();
                 calculateSalariedTax();
               }}
             >
-              Calculate
+              Calculate Tax
             </button>
           </div>
 
-          <ToastContainer />
+          <ToastContainer position="top-center" autoClose={3000} />
         </div>
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white/5 backdrop-blur rounded-xl p-4">
-            <h2 className="text-lg font-semibold text-white mb-3">Monthly Details</h2>
-            <div className="space-y-2 text-gray-200">
-              <div className="flex justify-between">
-                <span className="font-medium">Monthly Salary:</span>
-                <span>{monthlySalary}</span>
+        {(monthlyTax || annualTax) && (
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="bg-white/5 backdrop-blur rounded-xl p-6 border border-white/10">
+              <h2 className="text-xl font-bold text-white mb-4 pb-2 border-b border-white/20">Monthly Breakdown</h2>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300 text-sm">Gross Salary:</span>
+                  <span className="font-semibold text-white">Rs. {formatNumber(monthlySalary)}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300 text-sm">Tax Deduction:</span>
+                  <span className="font-semibold text-red-400">Rs. {formatNumber(monthlyTax)}</span>
+                </div>
+                <div className="pt-2 border-t border-white/20">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-100 font-medium">Net Salary:</span>
+                    <span className="font-bold text-emerald-400 text-lg">Rs. {formatNumber((monthlySalary - monthlyTax).toFixed(2))}</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="font-medium">Monthly Tax:</span>
-                <span>{monthlyTax}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium">Salary After Tax:</span>
-                <span>{monthlySalary ? (monthlySalary - monthlyTax).toFixed(2) : ""}</span>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur rounded-xl p-6 border border-white/10">
+              <h2 className="text-xl font-bold text-white mb-4 pb-2 border-b border-white/20">Annual Projection</h2>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300 text-sm">Gross Salary:</span>
+                  <span className="font-semibold text-white">Rs. {formatNumber(annualSalary)}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300 text-sm">Tax Deduction:</span>
+                  <span className="font-semibold text-red-400">Rs. {formatNumber(annualTax)}</span>
+                </div>
+                <div className="pt-2 border-t border-white/20">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-100 font-medium">Net Salary:</span>
+                    <span className="font-bold text-emerald-400 text-lg">Rs. {formatNumber((annualSalary - annualTax).toFixed(2))}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        )}
 
-          <div className="bg-white/5 backdrop-blur rounded-xl p-4">
-            <h2 className="text-lg font-semibold text-white mb-3">Annual Details</h2>
-            <div className="space-y-2 text-gray-200">
-              <div className="flex justify-between">
-                <span className="font-medium">Annual Salary:</span>
-                <span>{annualSalary}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium">Annual Tax:</span>
-                <span>{annualTax}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium">Salary After Tax:</span>
-                <span>{annualSalary ? (annualSalary - annualTax).toFixed(2) : ""}</span>
-              </div>
-            </div>
+        {!monthlyTax && !annualTax && (
+          <div className="mt-8 max-w-3xl mx-auto bg-white/5 backdrop-blur rounded-xl p-6 border border-white/10">
+            <h3 className="text-lg font-semibold text-white mb-3">How to Use</h3>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li className="flex items-start">
+                <span className="text-emerald-400 mr-2">•</span>
+                <span>Enter your monthly gross salary in Pakistani Rupees (PKR)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-emerald-400 mr-2">•</span>
+                <span>Click "Calculate Tax" to see your monthly and annual tax breakdown</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-emerald-400 mr-2">•</span>
+                <span>Tax calculations are based on current Pakistani income tax slabs for salaried individuals</span>
+              </li>
+            </ul>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
