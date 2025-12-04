@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const ServiceCard = () => {
   const [filter, setFilter] = useState("All");
   const [expandedCards, setExpandedCards] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
 
   const services = [
     {
@@ -241,10 +242,23 @@ const ServiceCard = () => {
     "USA services",
   ];
 
-  const filteredServices =
+  // Filter by category first
+  const categoryFiltered =
     filter === "All"
       ? services
       : services.filter((service) => service.category === filter);
+
+  // Then filter by search query
+  const filteredServices = categoryFiltered.filter((service) => {
+    if (!searchQuery.trim()) return true;
+    
+    const query = searchQuery.toLowerCase();
+    const titleMatch = service.title.toLowerCase().includes(query);
+    const requirementsMatch = service.requirements.toLowerCase().includes(query);
+    const priceMatch = service.price.toLowerCase().includes(query);
+    
+    return titleMatch || requirementsMatch || priceMatch;
+  });
 
   const toggleExpand = (index) => {
     setExpandedCards((prev) => ({
@@ -267,35 +281,102 @@ const ServiceCard = () => {
   return (
     <div className="pt-24 md:pt-28 lg:pt-32 pb-12   ">
       <div className="container mx-auto px-4">
-        {/* Header Section */}
-        <div className="lg:flex lg:justify-between lg:items-start mb-8">
-          <div className="lg:w-1/2 lg:pr-8">
-            <h1 className="text-3xl lg:text-4xl font-bold mb-3 text-white">
-              Our Business Services
-            </h1>
-            <p className="text-gray-300 text-lg max-w-xl">
-              Professional tax and business consulting services tailored to your needs.
-              Expert assistance for all your regulatory and compliance requirements.
-            </p>
-          </div>
+        {/* Header Section - Simplified */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-3 text-white">
+            Our Business Services
+          </h1>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            Professional tax and business consulting services tailored to your needs.
+            Expert assistance for all your regulatory and compliance requirements.
+          </p>
+        </div>
 
-          {/* Filter Tabs */}
-          <div className="lg:w-1/2 lg:pl-8 mt-6 lg:mt-0">
-            <div className="flex flex-wrap justify-center lg:justify-end gap-2">
+        {/* Unified Search & Filter Section */}
+        <div className="mb-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Search Bar */}
+            <div className="relative mb-4">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg
+                  className="h-5 w-5 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search services by name, requirements, or price..."
+                className="w-full pl-12 pr-12 py-4 bg-white/10 backdrop-blur border-2 border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all text-base"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition-colors"
+                  aria-label="Clear search"
+                >
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {/* Category Filter Pills - Below Search */}
+            <div className="flex flex-wrap justify-center gap-2">
+              <span className="text-sm text-gray-400 flex items-center mr-2">
+                Filter by category:
+              </span>
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilter(category)}
-                  className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-200 text-sm border-2 ${
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-200 text-sm ${
                     filter === category
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                      : "bg-white text-slate-700 border-slate-200 hover:border-slate-400 hover:shadow-sm"
+                      ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/30"
+                      : "bg-white/10 backdrop-blur text-gray-300 border border-white/20 hover:bg-white/20 hover:border-emerald-400/50"
                   }`}
                 >
                   {category}
                 </button>
               ))}
             </div>
+
+            {/* Search Results Count */}
+            {searchQuery && (
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-400">
+                  {filteredServices.length === 0 ? (
+                    <span className="text-red-400">No services found matching "{searchQuery}"</span>
+                  ) : (
+                    <span>
+                      Found <span className="text-emerald-400 font-semibold">{filteredServices.length}</span> service
+                      {filteredServices.length !== 1 ? 's' : ''} matching "{searchQuery}"
+                    </span>
+                  )}
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
