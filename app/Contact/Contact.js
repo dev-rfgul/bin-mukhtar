@@ -37,12 +37,23 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
+    // Format message for WhatsApp
+    const whatsappMessage = `*New Contact Form Submission*%0A%0A` +
+      `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Phone:* ${formData.number}%0A` +
+      `*Service Needed:* ${formData.service}%0A%0A` +
+      `*Message:*%0A${formData.message}`;
+    
+    // WhatsApp number (without + sign)
+    const whatsappNumber = '923180481998';
+    
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    
+    // Reset form after a short delay
     setTimeout(() => {
-      console.log(formData);
-      alert('Form submitted successfully!');
       setIsSubmitting(false);
-      // Reset form
       setFormData({
         firstName: '',
         lastName: '',
@@ -51,7 +62,7 @@ export default function Contact() {
         message: '',
         service: '',
       });
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -108,7 +119,7 @@ export default function Contact() {
                 {/* Name Fields Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="relative">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-200 mb-2">
                       First Name *
                     </label>
                     <div className="relative">
@@ -117,7 +128,7 @@ export default function Contact() {
                         type="text"
                         name="firstName"
                         placeholder="Enter your first name"
-                        className="w-full text-black pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4  placeholder:text-gray-300"
+                        className="w-full text-black pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4  placeholder:text-gray-500"
                         value={formData.firstName}
                         onChange={handleChange}
                         onFocus={() => setHoveredField('firstName')}
@@ -128,7 +139,7 @@ export default function Contact() {
                   </div>
 
                   <div className="relative">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-200 mb-2">
                       Last Name *
                     </label>
                     <div className="relative">
@@ -137,7 +148,7 @@ export default function Contact() {
                         type="text"
                         name="lastName"
                         placeholder="Enter your last name"
-                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300"
+                        className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-500"
                         value={formData.lastName}
                         onChange={handleChange}
                         onFocus={() => setHoveredField('lastName')}
@@ -150,7 +161,7 @@ export default function Contact() {
 
                 {/* Email Field */}
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-200 mb-2">
                     Email Address *
                   </label>
                   <div className="relative">
@@ -159,7 +170,7 @@ export default function Contact() {
                       type="email"
                       name="email"
                       placeholder="Enter your email address"
-                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-500"
                       value={formData.email}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('email')}
@@ -171,7 +182,7 @@ export default function Contact() {
 
                 {/* Phone Field */}
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-200 mb-2">
                     Phone Number *
                   </label>
                   <div className="relative">
@@ -180,7 +191,7 @@ export default function Contact() {
                       type="tel"
                       name="number"
                       placeholder="Enter your phone number"
-                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-500"
                       value={formData.number}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('number')}
@@ -192,7 +203,7 @@ export default function Contact() {
 
                 {/* Service Selection */}
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-200 mb-2">
                     Service Needed *
                   </label>
                   <select
@@ -215,7 +226,7 @@ export default function Contact() {
 
                 {/* Message Field */}
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-200 mb-2">
                     Message *
                   </label>
                   <div className="relative">
@@ -224,7 +235,7 @@ export default function Contact() {
                       name="message"
                       rows="5"
                       placeholder="Tell us about your project or requirements..."
-                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-300 resize-vertical"
+                      className="w-full pl-12 pr-4 py-4 border border-white/10 rounded-xl focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300 transition-all duration-300 bg-white/4 text-black placeholder:text-gray-500 resize-vertical"
                       value={formData.message}
                       onChange={handleChange}
                       onFocus={() => setHoveredField('message')}
@@ -242,15 +253,15 @@ export default function Contact() {
                       className="group relative overflow-hidden bg-gradient-to-r from-emerald-400 to-indigo-500 hover:from-emerald-500 hover:to-indigo-600 text-black font-bold py-4 px-12 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl inline-flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       <span className="relative z-10">
-                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                        {isSubmitting ? 'Opening WhatsApp...' : 'Send via WhatsApp'}
                       </span>
                       <Send className={`w-5 h-5 transition-transform duration-300 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
                       <div className="absolute inset-0 bg-white/6 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     </button>
                   </div>
 
-                {/* Alternative Contact Methods */}
-                <div className="border-t border-gray-200 pt-8 mt-8">
+                {/* Alternative Contact Methods - Commented for future implementation */}
+                {/* <div className="border-t border-gray-200 pt-8 mt-8">
                   <p className="text-center text-gray-600 mb-6">
                     Or contact us directly:
                   </p>
@@ -272,7 +283,7 @@ export default function Contact() {
                       <span>Email Us</span>
                     </a>
                   </div>
-                </div>
+                </div> */}
                 </form>
               </div>
             </div>
