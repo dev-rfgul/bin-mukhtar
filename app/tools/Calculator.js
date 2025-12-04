@@ -1,22 +1,17 @@
 
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function Calculator() {
-  const notify = () => toast.success("Tax calculation completed successfully!");
+  // const notify = () => toast.success("Tax calculation completed successfully!");
 
   const [monthlySalary, setMonthlySalary] = useState("");
   const [annualSalary, setAnnualSalary] = useState("");
   const [monthlyTax, setMonthlyTax] = useState("");
   const [annualTax, setAnnualTax] = useState("");
 
-  const autoScroll = () => {
-    window.scrollTo({
-      top: 500,
-      behavior: "smooth",
-    });
-  };
+
 
   // Format number with commas for thousands
   const formatNumber = (num) => {
@@ -46,7 +41,7 @@ function Calculator() {
     setAnnualSalary((monthlySalaryFloat * 12).toFixed(2));
     setAnnualTax(annualTaxFloat.toFixed(2));
     setMonthlyTax(monthlyTaxFloat.toFixed(2));
-    notify();
+    // notify();
   };
 
   const calculateMonthlyTax = (monthlySalary) => {
@@ -99,7 +94,7 @@ function Calculator() {
             <button
               className="w-full md:w-auto px-8 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-lg transition-all duration-200 hover:shadow-xl"
               onClick={() => {
-                autoScroll();
+                // autoScroll();
                 calculateSalariedTax();
               }}
             >
@@ -107,7 +102,7 @@ function Calculator() {
             </button>
           </div>
 
-          <ToastContainer position="top-center" autoClose={3000} />
+          {/* <ToastContainer position="top-center" autoClose={3000} /> */}
         </div>
 
         {(monthlyTax || annualTax) && (
