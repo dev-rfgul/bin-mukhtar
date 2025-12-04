@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 const ScrollServices = () => {
+    const router = useRouter();
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [isInViewport, setIsInViewport] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
@@ -12,161 +14,198 @@ const ScrollServices = () => {
  
     const cards = [
         {
-            title: 'Tax Planning & Compliance',
-            subtitle: 'Strategic tax solutions to optimize your business growth and ensure full compliance',
+            title: 'NTN Registration – Salaried',
+            subtitle: 'Essential tax registration for salaried individuals',
             backgroundImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            badge: 'Essential',
+            badge: 'Most Popular',
+            price: 'RS: 400',
+            time: '1-2 Working Days',
+            category: 'Income Tax return',
+            whatsappMessage: 'Hello, I am interested in *NTN Registration – Salaried* (RS: 400). I would like to proceed with the registration.',
             content: (
                 <div className="max-w-2xl">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                        Tax Planning & Compliance
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                        NTN Registration – Salaried
                     </h3>
-                    <p className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed">
-                        Comprehensive tax strategies designed to minimize your tax liability while ensuring full compliance with ever-changing regulations.
-                    </p>
-                    <div className="flex flex-wrap gap-3 mb-8">
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Income Tax
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Corporate Tax
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            GST/VAT
-                        </span>
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-2xl font-bold text-emerald-400">RS: 400</span>
+                        <span className="text-lg text-white/80">• 1-2 Working Days</span>
                     </div>
-                    <button className="bg-white text-gray-900 font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
-                        Learn More
-                    </button>
+                    <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                        Quick and affordable NTN registration service for salaried individuals. Get your tax registration completed hassle-free.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                        <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Requirements:</p>
+                        <ul className="space-y-1.5 text-sm text-white/90">
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Color copy of CNIC</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Latest paid electricity bill</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Phone Number & Email address</li>
+                        </ul>
+                    </div>
                 </div>
             ),
         },
         {
-            title: 'Business Registration & Setup',
-            subtitle: 'Complete business formation services from concept to operation',
+            title: 'Private Limited Company Registration',
+            subtitle: 'Complete company formation with SECP',
             backgroundImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            badge: 'Popular',
+            badge: 'Essential',
+            price: 'RS: 12,000',
+            time: '2-3 Working Days',
+            category: "Company's Registration",
+            whatsappMessage: 'Hello, I am interested in *Private Limited Company Registration* (RS: 12,000). I would like to start my company registration process.',
             content: (
                 <div className="max-w-2xl">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                        Business Registration & Setup
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                        Private Limited Company Registration
                     </h3>
-                    <p className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed">
-                        Streamlined business registration process with expert guidance through all legal requirements and documentation.
-                    </p>
-                    <div className="flex flex-wrap gap-3 mb-8">
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Company Registration
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            License Acquisition
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Compliance Setup
-                        </span>
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-2xl font-bold text-emerald-400">RS: 12,000</span>
+                        <span className="text-lg text-white/80">• 2-3 Working Days</span>
                     </div>
-                    <button className="bg-white text-gray-900 font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
-                        Start Registration
-                    </button>
+                    <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                        Professional company registration with SECP. Complete setup with all legal documentation and compliance requirements.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                        <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Requirements:</p>
+                        <ul className="space-y-1.5 text-sm text-white/90">
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Three proposed company names</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>CNIC copies of directors</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>NTN of directors/subscribers</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Registered address details</li>
+                        </ul>
+                    </div>
                 </div>
             ),
         },
         {
-            title: 'Financial Advisory & Consulting',
-            subtitle: 'Expert financial guidance to accelerate your business success',
+            title: 'GST Registration',
+            subtitle: 'Sales tax registration for your business',
             backgroundImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            badge: 'Premium',
+            badge: 'Required',
+            price: 'RS: 15,000',
+            time: '2-3 Working Days',
+            category: 'Sales Tax Registration',
+            whatsappMessage: 'Hello, I am interested in *GST Registration* (RS: 15,000 for non-manufacturers). Please provide more details about the registration process.',
             content: (
                 <div className="max-w-2xl">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                        Financial Advisory & Consulting
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                        GST Registration
                     </h3>
-                    <p className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed">
-                        Strategic financial planning and advisory services to optimize cash flow, investments, and long-term growth strategies.
-                    </p>
-                    <div className="flex flex-wrap gap-3 mb-8">
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Financial Planning
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Investment Advisory
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Risk Management
-                        </span>
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-2xl font-bold text-emerald-400">RS: 15,000</span>
+                        <span className="text-lg text-white/80">• 2-3 Working Days</span>
                     </div>
-                    <button className="bg-white text-gray-900 font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
-                        Get Consultation
-                    </button>
+                    <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                        Complete GST registration service including documentation, biometric verification, and compliance setup.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                        <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Requirements:</p>
+                        <ul className="space-y-1.5 text-sm text-white/90">
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Bank Account Certificate</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>GPS-tagged business premises photos</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Utility bills & CNIC copies</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Biometric Verification</li>
+                        </ul>
+                    </div>
                 </div>
             ),
         },
         {
-            title: 'Audit & Assurance Services',
-            subtitle: 'Comprehensive audit solutions ensuring accuracy and compliance',
+            title: 'Annual Income Tax Filing – Salaried',
+            subtitle: 'Professional tax return filing for individuals',
             backgroundImage: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            badge: 'Certified',
+            badge: 'Annual',
+            price: 'Minimum: 2,650',
+            time: '4-5 Working Days',
+            category: 'Income Tax return',
+            whatsappMessage: 'Hello, I am interested in *Annual Income Tax Filing – Salaried* (Minimum Fee: RS 2,650). I need help filing my annual tax return.',
             content: (
                 <div className="max-w-2xl">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                        Audit & Assurance Services
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                        Annual Income Tax Filing
                     </h3>
-                    <p className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed">
-                        Professional audit and assurance services providing stakeholders with confidence in your financial reporting and internal controls.
-                    </p>
-                    <div className="flex flex-wrap gap-3 mb-8">
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Financial Audits
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Internal Audits
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Compliance Reviews
-                        </span>
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-2xl font-bold text-emerald-400">Min: RS 2,650</span>
+                        <span className="text-lg text-white/80">• 4-5 Working Days</span>
                     </div>
-                    <button className="bg-white text-gray-900 font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
-                        Schedule Audit
-                    </button>
+                    <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                        Expert annual tax return filing service for salaried individuals with complete documentation and compliance.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                        <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Requirements:</p>
+                        <ul className="space-y-1.5 text-sm text-white/90">
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Annual Salary certificate</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Other income sources (if any)</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Annual expenses & asset details</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Investment & disposal records</li>
+                        </ul>
+                    </div>
                 </div>
             ),
         },
         {
-            title: '24/7 Support & Consultation',
-            subtitle: 'Round-the-clock expert support for all your business needs',
+            title: 'NTN Registration – Business',
+            subtitle: 'Tax registration for business entities',
             backgroundImage: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            badge: 'Always Available',
+            badge: 'Popular',
+            price: 'RS: 2,500',
+            time: '1-2 Working Days',
+            category: 'Income Tax return',
+            whatsappMessage: 'Hello, I am interested in *NTN Registration – Business* (RS: 2,500). I would like to register my business for tax purposes.',
             content: (
                 <div className="max-w-2xl">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                        24/7 Support & Consultation
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                        NTN Registration – Business
                     </h3>
-                    <p className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed">
-                        Dedicated support team available around the clock to address your urgent business questions and provide expert guidance when you need it most.
-                    </p>
-                    <div className="flex flex-wrap gap-3 mb-8">
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Phone Support
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Online Chat
-                        </span>
-                        <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                            Emergency Help
-                        </span>
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-2xl font-bold text-emerald-400">RS: 2,500</span>
+                        <span className="text-lg text-white/80">• 1-2 Working Days</span>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="bg-white text-gray-900 font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
-                            Contact Support
-                        </button>
-                        <a
-                            href="https://wa.me/923180481998?text=Hello, I need urgent assistance"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-green-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-green-700 transition-all duration-300 transform hover:scale-105 text-center"
-                        >
-                            WhatsApp Now
-                        </a>
+                    <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                        Fast and reliable NTN registration for business entities with complete documentation support.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                        <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Requirements:</p>
+                        <ul className="space-y-1.5 text-sm text-white/90">
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Color copy of CNIC</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Office premises documents</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Letter head & utility bills</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Contact details</li>
+                        </ul>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: 'Monthly Sales Tax Return Filing',
+            subtitle: 'Regular compliance for GST registered businesses',
+            backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            badge: 'Monthly',
+            price: 'Minimum: 5,000',
+            time: '3-4 Working Days',
+            category: 'Sales Tax Registration',
+            whatsappMessage: 'Hello, I am interested in *Monthly Sales Tax Return Filing* service (Minimum Fee: RS 5,000). I need assistance with my sales tax compliance.',
+            content: (
+                <div className="max-w-2xl">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                        Monthly Sales Tax Filing
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-2xl font-bold text-emerald-400">Min: RS 5,000</span>
+                        <span className="text-lg text-white/80">• 3-4 Working Days</span>
+                    </div>
+                    <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                        Professional monthly Federal/Provincial sales tax return filing service ensuring timely compliance.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                        <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Requirements:</p>
+                        <ul className="space-y-1.5 text-sm text-white/90">
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Sales invoice copies</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Purchase invoice copies</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Bank statements</li>
+                            <li className="flex items-start"><span className="text-emerald-400 mr-2">✓</span>Other supporting documents</li>
+                        </ul>
                     </div>
                 </div>
             ),
@@ -338,24 +377,24 @@ const ScrollServices = () => {
                                     let cardZIndex = 0;
                                     
                                     if (index === currentCardIndex) {
-                                        // Current card - moves up as scroll progresses
-                                        cardOpacity = 1 - scrollProgress * 0.3;
-                                        cardTransform = `translateY(-${scrollProgress * 50}%) scale(${1 - scrollProgress * 0.05})`;
+                                        // Current card - moves up as scroll progresses, stays more visible
+                                        cardOpacity = 1 - scrollProgress * 0.5; // Increased visibility during transition
+                                        cardTransform = `translateY(-${scrollProgress * 40}%) scale(${1 - scrollProgress * 0.08})`;
                                         cardZIndex = 10;
                                     } else if (index === currentCardIndex + 1 && currentCardIndex < cards.length - 1) {
-                                        // Next card - slides up from bottom (only if not the last card)
-                                        cardOpacity = scrollProgress;
-                                        cardTransform = `translateY(${(1 - scrollProgress) * 100}%) scale(${0.95 + scrollProgress * 0.05})`;
+                                        // Next card - slides up from bottom with better overlap (only if not the last card)
+                                        cardOpacity = scrollProgress * 0.9; // Start showing earlier
+                                        cardTransform = `translateY(${(1 - scrollProgress) * 80}%) scale(${0.92 + scrollProgress * 0.08})`; // Closer starting position
                                         cardZIndex = 15;
                                     } else if (index < currentCardIndex) {
                                         // Previous cards - hidden above
                                         cardOpacity = 0;
-                                        cardTransform = 'translateY(-100%) scale(0.95)';
+                                        cardTransform = 'translateY(-100%) scale(0.92)';
                                         cardZIndex = 5;
                                     } else {
                                         // Future cards - hidden below
                                         cardOpacity = 0;
-                                        cardTransform = 'translateY(100%) scale(0.95)';
+                                        cardTransform = 'translateY(100%) scale(0.92)';
                                         cardZIndex = 5;
                                     }
                                     
@@ -370,7 +409,7 @@ const ScrollServices = () => {
                                         <div
                                             key={index}
                                             ref={el => cardRefs.current[index] = el}
-                                            className="absolute inset-0 transition-all duration-300 ease-out"
+                                            className="absolute inset-0 transition-all duration-150 ease-out"
                                             style={{
                                                 opacity: cardOpacity,
                                                 transform: cardTransform,
@@ -406,8 +445,35 @@ const ScrollServices = () => {
                                                     </div>
 
                                                     {/* Content */}
-                                                    <div className="relative z-10 h-full flex items-center p-4 md:p-8 lg:p-12">
+                                                    <div className="relative z-10 h-full flex flex-col justify-between p-4 md:p-8 lg:p-12">
                                                         {card.content}
+                                                        
+                                                        {/* Action Buttons */}
+                                                        <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                                                            <a
+                                                                href={`https://wa.me/923180481998?text=${encodeURIComponent(card.whatsappMessage)}`}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="bg-green-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-green-700 transition-all duration-300 transform hover:scale-105 text-center flex items-center justify-center gap-2"
+                                                            >
+                                                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                                                </svg>
+                                                                WhatsApp
+                                                            </a>
+                                                            <button
+                                                                onClick={() => {
+                                                                    const params = new URLSearchParams({ search: card.title });
+                                                                    router.push(`/Services?${params.toString()}`);
+                                                                }}
+                                                                className="bg-white text-gray-900 font-bold px-6 py-3 rounded-xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                                                            >
+                                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                                </svg>
+                                                                View Details
+                                                            </button>
+                                                        </div>
                                                     </div>
 
                                                     {/* Animated border */}

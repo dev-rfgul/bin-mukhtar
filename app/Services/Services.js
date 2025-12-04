@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const ServiceCard = () => {
+const ServiceCard = ({ initialCategory, initialSearch }) => {
   const [filter, setFilter] = useState("All");
   const [expandedCards, setExpandedCards] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Set filter based on initialCategory from URL
+  useEffect(() => {
+    if (initialCategory && initialCategory !== "All") {
+      setFilter(initialCategory);
+    }
+  }, [initialCategory]);
+
+  // Set search query based on initialSearch from URL
+  useEffect(() => {
+    if (initialSearch) {
+      setSearchQuery(initialSearch);
+      setFilter("All"); // Reset filter when searching for specific service
+    }
+  }, [initialSearch]);
 
   const services = [
     {
@@ -290,6 +305,41 @@ const ServiceCard = () => {
             Professional tax and business consulting services tailored to your needs.
             Expert assistance for all your regulatory and compliance requirements.
           </p>
+          {initialSearch && (
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/50 rounded-full">
+              <span className="text-blue-300 text-sm">
+                Viewing: <span className="font-semibold">{initialSearch}</span>
+              </span>
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  window.history.pushState({}, '', '/Services');
+                }}
+                className="text-blue-300 hover:text-white transition-colors"
+                title="Clear search"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          )}
+          {initialCategory && initialCategory !== "All" && !initialSearch && (
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-400/50 rounded-full">
+              <span className="text-emerald-300 text-sm">
+                Showing: <span className="font-semibold">{initialCategory}</span>
+              </span>
+              <button
+                onClick={() => setFilter("All")}
+                className="text-emerald-300 hover:text-white transition-colors"
+                title="Clear filter"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Unified Search & Filter Section */}
